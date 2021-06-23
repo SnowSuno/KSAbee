@@ -9,7 +9,7 @@ class App extends React.Component{
   }
 
   callAPI() {
-    fetch("http://localhost:3001/api")
+    fetch("api")
         .then(res => res.json())
         .then(data => this.setState({title: data.title}));
   }
