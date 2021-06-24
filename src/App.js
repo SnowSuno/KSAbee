@@ -1,6 +1,5 @@
 import React from "react";
-import logo from './logo.svg';
-import './App.css';
+import Header from './component/Header.js';
 
 class App extends React.Component{
   constructor(props) {
@@ -22,14 +21,7 @@ class App extends React.Component{
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <div>
-            {this.state.title
-            ? <h1>{this.state.title}</h1>
-            : <h1>Loading...</h1>}
-          </div>
-        </header>
+		<Header/>
       </div>
     );
   }
