@@ -1,5 +1,6 @@
 import React from "react";
 import Header from './component/Header.js';
+import ProfileItemList from './component/ProfileItemList';
 
 class App extends React.Component{
   constructor(props) {
@@ -21,7 +22,8 @@ class App extends React.Component{
   render() {
     return (
       <div className="App">
-		<Header/>
+		    <Header/>
+        <ProfileItemList/>
       </div>
     );
   }
