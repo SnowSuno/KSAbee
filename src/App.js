@@ -1,32 +1,37 @@
-import React from "react";
+import React, { useState } from "react";
 import Header from './component/Header.js';
+import SearchBar from './component/SearchBar.js';
+import SelectCategory from "./component/SelectCategory.js";
 import ProfileItemList from './component/ProfileItemList';
 
-class App extends React.Component{
-  constructor(props) {
-    super(props);
-    this.state = {title: null}
+export default function App() {
+  const [selectLine, setSelectLine] = useState("all");
+  const [selectBatch, setSelectBatch] = useState("all");
+  console.log("select line : ", selectLine);
+
+  const handleSelectLine = (line) => {
+    console.log(line);
+    setSelectLine(line);
   }
 
-  callAPI() {
-    fetch("api")
-        .then(res => res.json())
-        .then(data => this.setState({title: data.title}));
+  const handleSelectBatch = (batch) => {
+    setSelectBatch(batch);
   }
 
-  componentDidMount() {
-    this.callAPI()
-    console.log(this.state)
-  }
-
-  render() {
-    return (
-      <div className="App">
-		    <Header/>
-        <ProfileItemList/>
-      </div>
-    );
-  }
+  return (
+    <div className="App">
+      <Header/>
+      <SearchBar/>
+      <SelectCategory
+        selectLine = {selectLine}
+        selectBatch = {selectBatch}
+        onSelectLine={handleSelectLine}
+        onSelectBatch={handleSelectBatch}
+      />
+      <ProfileItemList
+        selectLine = {selectLine}
+        selectBatch = {selectBatch}
+      />
+  </div>
+  )
 }
-
-export default App;
