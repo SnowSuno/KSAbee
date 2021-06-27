@@ -4,6 +4,7 @@ import './ProfileItem.css'
 
 const ProfileItemList = () => {
 
+  // eslint-disable-next-line
   const [profileList, setProfileList] = useState([
     {studentID:"19-079", nickName:"마리마리착마리"},
     {studentID:"19-001", nickName:"리듬타지마"},
