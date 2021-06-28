@@ -10,7 +10,7 @@ const LineButton = ({line, active, onClick}) => {
 }
 
 export default function SelectLineButton({selectLine, onSelectLine}) {
-    const lines = ["all", "top", "jungle", "mid", "bottom", "support"]
+    const lines = ["All", "top", "jungle", "mid", "bottom", "support"]
     const lineList = lines.map(
         line => 
         <LineButton 

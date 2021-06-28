@@ -5,9 +5,9 @@ import SelectCategory from "./component/SelectCategory.js";
 import ProfileItemList from './component/ProfileItemList';
 
 export default function App() {
-  const [selectLine, setSelectLine] = useState("all");
-  const [selectBatch, setSelectBatch] = useState("all");
-  console.log("select line : ", selectLine);
+  const [selectLine, setSelectLine] = useState('All');
+  const [selectBatch, setSelectBatch] = useState('All');
+  const [searchTerm, setSearchTerm] = useState('');
 
   const handleSelectLine = (line) => {
     console.log(line);
@@ -18,10 +18,17 @@ export default function App() {
     setSelectBatch(batch);
   }
 
+  const handleChange = (e) => {
+    setSearchTerm(e.target.value);
+  }
+
   return (
     <div className="App">
       <Header/>
-      <SearchBar/>
+      <SearchBar
+        value={searchTerm}
+        onChange={handleChange}
+      />
       <SelectCategory
         selectLine = {selectLine}
         selectBatch = {selectBatch}
@@ -31,6 +38,7 @@ export default function App() {
       <ProfileItemList
         selectLine = {selectLine}
         selectBatch = {selectBatch}
+        searchTerm = {searchTerm}
       />
   </div>
   )

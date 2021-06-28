@@ -7,7 +7,7 @@ const ProfileItem = ({ info }) => {
     return (
         <tr className="profileItem">
             <td>
-                {info['id']}
+                id
             </td>
             <td>
                 <img className="profileImg" src={info['profileImg']} alt="profile-img"/>
