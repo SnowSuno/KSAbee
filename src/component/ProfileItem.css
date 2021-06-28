@@ -1,3 +1,51 @@
 .profileItem {
+    background: #ffffff;
+}
+
+td {
+    width: 10%;
+    height: 100px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+
+.profileImg {
+    height: 90px;
+    margin: auto 0 auto 0;
+    border-radius: 50%;
+}
+
+.gameLog {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 25px;
+    width: 100%;
+    border-radius: 4px;
+    font-size: 15px;
+    margin: auto 0 auto 0;
+    background: #ee5a52;
+    color: #ffffff;
+}
+
+.winCount {
+    display: inline-block;
+    line-height: 25px;
+    height: 25px;
+    border-radius: 4px 0 0 4px;
     background: #6482e4;
+}
+
+.lossCount {
+    display: inline-block;
+    padding: 0 10px 0 0;
+    line-height: 25px;
+    height: 25px;
+    border-radius: 0 4px 4px 0;
+}
+
+.positionImg {
+    height: 80px;
+    margin: auto 0 auto 0;
 }

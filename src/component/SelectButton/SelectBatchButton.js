@@ -9,7 +9,7 @@ const BatchButton = ({batch}) => {
 }
 
 export default function SelectBatchButton({selectBatch, onSelectBatch}) {
-    const batches = ["all", "19", "20", "21"];
+    const batches = ["All", "19", "20", "21"];
     const batchList = batches.map(
         batch =>
         <BatchButton
