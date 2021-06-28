@@ -6,7 +6,7 @@ import infoList from './../dummy'
 const ProfileItemList = ({selectLine, selectBatch, searchTerm}) => {
   console.log(infoList);
 
-  var result = infoList.filter(userInfo => 
+  let result = infoList.filter(userInfo =>
     JSON.stringify(userInfo).includes(searchTerm)
   );
 
