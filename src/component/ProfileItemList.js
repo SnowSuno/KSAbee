@@ -1,33 +1,39 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+import axios from 'axios';
 import ProfileItem from './ProfileItem'
 import './ProfileItemList.css'
 import infoList from './../dummy'
 
 const ProfileItemList = ({selectLine, selectBatch, searchTerm}) => {
-  console.log(infoList);
+  const [data, setData] = useState();
 
-  var result = infoList.filter(userInfo => 
-    JSON.stringify(userInfo).includes(searchTerm)
-  );
+  useEffect(() => {
+    axios.get('https://apiservice-ksabee.herokuapp.com/users')
+    .then(
+      (res) => 
+      setData(res.data));
+  }, []);
+  console.log(data);
 
-  if (selectLine !== 'All') {
-    result = result.filter(userInfo =>
-      userInfo['position'] === selectLine
+  const profileFilter = (userInfo) => {
+    var result = userInfo.filter(info =>
+      JSON.stringify(info).includes(searchTerm)
     );
-  }
 
-  if (selectBatch !== 'All') {
-    result = result.filter(userInfo =>
-      userInfo['studentID'].slice(0,2) === selectBatch
+    if (selectLine !== 'All') {
+      result = result.filter(userInfo =>
+        userInfo['position'] === selectLine
       );
-  }
+    }
+    
+    if (selectBatch !== 'All') {
+      result = result.filter(userInfo =>
+        userInfo['studentID'].slice(0,2) === selectBatch
+      );
+    }
 
-  const profileLists = result.map(
-    userInfo => 
-    <ProfileItem
-      info = {userInfo}
-      key = {userInfo['studentID']}
-    />)
+    return result;
+  }
 
   return (
     <div className="profileItemList">
@@ -47,7 +53,13 @@ const ProfileItemList = ({selectLine, selectBatch, searchTerm}) => {
         </thead>
 
         <tbody>
-          {profileLists}
+          {data !== undefined &&
+          profileFilter(data).map(
+            userInfo => 
+            <ProfileItem
+              info = {userInfo}
+              key = {userInfo['studentID']}
+            />)}
         </tbody>      
       </table>
     </div>
