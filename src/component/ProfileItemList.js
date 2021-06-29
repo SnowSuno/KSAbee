@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios';
 import ProfileItem from './ProfileItem'
 import './ProfileItemList.css'
-import infoList from './../dummy'
 
 const ProfileItemList = ({selectLine, selectBatch, searchTerm}) => {
   const [data, setData] = useState();
