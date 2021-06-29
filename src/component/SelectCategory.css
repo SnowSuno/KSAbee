@@ -1,0 +1,6 @@
+.SelectCategory {
+    display: flex;
+    justify-content: space-between;
+    width: 848px;
+    margin: 10px auto 0 auto;
+}

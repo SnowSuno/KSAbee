@@ -1,4 +1,5 @@
 import React from 'react'
+import './SelectBatchButton.css'
 
 const BatchButton = ({batch}) => {
     return (
@@ -19,7 +20,7 @@ export default function SelectBatchButton({selectBatch, onSelectBatch}) {
         )
 
     return (
-        <div>
+        <div className="batchButton">
             <select onChange={(event) => onSelectBatch(event.target.value)}>
                 {batchList}
             </select>

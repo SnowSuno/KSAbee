@@ -6,7 +6,7 @@ export default function SearchBar({value, onChange}) {
             <input
                 type={"text"}
                 size={"25"}
-                className={"input-sm"} 
+                className={"searchBar"} 
                 placeholder={"Search"}
                 value = {value}
                 onChange={onChange}

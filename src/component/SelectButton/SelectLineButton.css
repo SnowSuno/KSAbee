@@ -1,10 +1,25 @@
+.lineButtons {
+    display: flex;
+}
+
 .line {
     display: inline-block;
-    border: 1px solid #3e3e3e;
-    margin: 5px;
-    padding: 5px;
+    width: 60px;
+    height: 30px;
+    line-height: 30px;
+    font-size: 12px;
+    text-align: center;
 }
 
 .line.active {
-    background-color: #999999;
+    background-color: #ffc966;
+    border-color: #ffa500;
+    border-style: solid;
+    border-width: 1px 1px 0 1px;
+    border-radius: 7px 7px 0 0;
+}
+
+.line:hover {
+    background-color: #ffedcc;
+    border-radius: 7px 7px 0 0;
 }

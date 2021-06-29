@@ -3,6 +3,7 @@ import ProfileItem from './ProfileItem'
 import './ProfileItemList.css'
 
 const ProfileItemList = ({data, selectLine, selectBatch, searchTerm}) => {
+  console.log(data);
   const profileFilter = (userInfo) => {
     var result = userInfo.filter(info =>
       info['nickName'].includes(searchTerm) ||
@@ -46,9 +47,10 @@ const ProfileItemList = ({data, selectLine, selectBatch, searchTerm}) => {
         <tbody>
           {data !== undefined &&
           profileFilter(data).map(
-            userInfo => 
+            (userInfo, index) => 
             <ProfileItem
               info = {userInfo}
+              index = {index}
               key = {userInfo['studentID']}
             />)}
         </tbody>      

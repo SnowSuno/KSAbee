@@ -1,8 +1,31 @@
 .profileItemList {
-    background-color: #f2f2f2;
+    background-color: #fff6e5;
     padding: 30px 0px 30px 0px;
 }
 
-.profileItemList table {
+table {
     margin: 0 auto 0 auto;
+    border-collapse: separate;
+    border-spacing: 0 20px;
+}
+
+thead {
+    background-color: #7f5200;
+    color: #fff6e5;
+    font-size: 15px;
+}
+
+tr {
+    border-radius: 10px;
+    box-shadow:  0 0 40px rgba(0,0,0,0.05);
+}
+
+td:first-child {
+    border-top-left-radius: 20px; 
+    border-bottom-left-radius: 20px;
+}
+
+td:last-child {
+    border-bottom-right-radius: 20px; 
+    border-top-right-radius: 20px; 
 }

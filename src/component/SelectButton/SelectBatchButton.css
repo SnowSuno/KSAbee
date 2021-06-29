@@ -1,0 +1,11 @@
+.batchButton select{
+    width:100px;
+    height: 30px;
+    padding:5px;
+    border:1px solid #999;
+    border-radius:3px;
+}
+    
+.batchButton select::-ms-expand {
+    display: none;
+}
