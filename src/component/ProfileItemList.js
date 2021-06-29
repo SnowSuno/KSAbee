@@ -1,22 +1,14 @@
-import React, { useState, useEffect } from 'react'
-import axios from 'axios';
+import React from 'react'
 import ProfileItem from './ProfileItem'
 import './ProfileItemList.css'
 
-const ProfileItemList = ({selectLine, selectBatch, searchTerm}) => {
-  const [data, setData] = useState();
-
-  useEffect(() => {
-    axios.get('https://apiservice-ksabee.herokuapp.com/users')
-    .then(
-      (res) => 
-      setData(res.data));
-  }, []);
-  console.log(data);
-
+const ProfileItemList = ({data, selectLine, selectBatch, searchTerm}) => {
   const profileFilter = (userInfo) => {
     var result = userInfo.filter(info =>
-      JSON.stringify(info).includes(searchTerm)
+      info['nickName'].includes(searchTerm) ||
+      info['studentID'].includes(searchTerm) ||
+      info['tier'].includes(searchTerm) ||
+      String(info['level']).includes(searchTerm)
     );
 
     if (selectLine !== 'All') {
