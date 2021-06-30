@@ -4,6 +4,7 @@ import Header from './component/Header.js';
 import SearchBar from './component/SearchBar.js';
 import SelectCategory from "./component/SelectCategory.js";
 import ProfileItemList from './component/ProfileItemList';
+import Footer from './component/Footer.js';
 
 export default function App() {
   const [selectLine, setSelectLine] = useState('All');
@@ -28,6 +29,7 @@ export default function App() {
     .then(
       (res) => 
       setData(res.data));    
+    console.log('api load');
     console.log(data);
   }, []);
 
@@ -50,6 +52,7 @@ export default function App() {
         selectBatch = {selectBatch}
         searchTerm = {searchTerm}
       />
+      <Footer/>
   </div>
   )
 }

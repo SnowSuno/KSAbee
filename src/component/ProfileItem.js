@@ -26,12 +26,9 @@ const ProfileItem = ({ info, index }) => {
             </td>
             <td>
                 <div className="gameLog">
-                    <div className="winCount" style={{width: `${info['tierInfo']['winRate']}%`}}>
-                        {info['tierInfo']['wins']}
-                    </div>
-                    <div className="lossCount">
-                        {info['tierInfo']['losses']}
-                    </div>
+                    <div className="winBox" style={{width: `${info['tierInfo']['winRate']}%`}}></div>
+                    <p className="winNumber">{info['tierInfo']['wins']}</p>
+                    <p className="lossNumber">{info['tierInfo']['losses']}</p>
                 </div>
             </td>
             <td>

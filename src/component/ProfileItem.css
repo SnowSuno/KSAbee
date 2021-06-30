@@ -2,6 +2,11 @@
     background: #ffffff;
 }
 
+th {
+    width: 100px;
+    height: 30px;
+}
+
 td {
     width: 100px;
     height: 100px;
@@ -9,7 +14,19 @@ td {
     vertical-align: middle;
 }
 
+td:last-child {
+    border-bottom-right-radius: 20px; 
+    border-top-right-radius: 20px; 
+}
+
+/* index */
+th:nth-child(1) {
+    width: 30px;
+}
+
 td:nth-child(1) {
+    border-top-left-radius: 20px; 
+    border-bottom-left-radius: 20px;
     width: 30px;
 }
 
@@ -19,8 +36,72 @@ td:nth-child(1) {
     border-radius: 50%;
 }
 
+/* nick name */
+th:nth-child(3) {
+    width: 120px;
+}
+
+td:nth-child(3) {
+    width: 120px;
+}
+
+/* 학번, 이름 */
+th:nth-child(4) {
+    width: 120px;
+}
+
+td:nth-child(4) {
+    width: 120px;
+}
+
+/* 티어 */
+th:nth-child(5) {
+    width: 140px;
+}
+
+td:nth-child(5) {
+    width: 140px;
+}
+
+/* 레벨 */
+th:nth-child(6) {
+    width: 60px;
+}
+
+td:nth-child(6) {
+    width: 60px;
+}
+
+/* 승, 패수 */
+th:nth-child(7) {
+    width: 140px;
+}
+
+td:nth-child(7) {
+    width: 140px;
+}
+
+/* 승률 */
+th:nth-child(8) {
+    width: 60px;
+}
+
+td:nth-child(8) {
+    width: 60px;
+}
+
+/* 포지션 */
+th:nth-child(9) {
+    width: 60px;
+}
+
+td:nth-child(9) {
+    width: 60px;
+}
+
 .gameLog {
     display: flex;
+    position: relative;
     justify-content: space-between;
     align-items: center;
     height: 25px;
@@ -32,23 +113,23 @@ td:nth-child(1) {
     color: #ffffff;
 }
 
-.winCount {
-    display: inline-block;
-    line-height: 25px;
+.winBox {
     height: 25px;
     border-radius: 4px 0 0 4px;
     background: #6482e4;
 }
 
-.lossCount {
-    display: inline-block;
-    padding: 0 10px 0 0;
-    line-height: 25px;
-    height: 25px;
-    border-radius: 0 4px 4px 0;
+.winNumber {
+    position: absolute;
+    left: 10px;
+}
+
+.lossNumber {
+    position: absolute;
+    right: 10px;
 }
 
 .positionImg {
-    height: 50px;
+    height: 40px;
     margin: auto 0 auto 0;
 }
