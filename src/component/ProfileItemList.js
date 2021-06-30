@@ -22,7 +22,6 @@ const ProfileItemList = ({data, selectLine, selectBatch, searchTerm}) => {
         userInfo['studentID'].slice(0,2) === selectBatch
       );
     }
-
     return result;
   }
 

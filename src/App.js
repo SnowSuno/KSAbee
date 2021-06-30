@@ -1,16 +1,24 @@
-import React, { useState, useEffect } from "react";
-import axios from 'axios';
+import React, { useState } from "react";
 import Header from './component/Header.js';
 import SearchBar from './component/SearchBar.js';
 import SelectCategory from "./component/SelectCategory.js";
 import ProfileItemList from './component/ProfileItemList';
 import Footer from './component/Footer.js';
+import useGetApi from './api/useGetApi.js'
 
 export default function App() {
   const [selectLine, setSelectLine] = useState('All');
   const [selectBatch, setSelectBatch] = useState('All');
   const [searchTerm, setSearchTerm] = useState('');
-  const [data, setData] = useState();
+  const {data, loading, error} = useGetApi();
+
+  if (!loading) {
+    if (!error) {
+      console.log(data);
+    } else {
+      console.error(error);
+    }
+  }
 
   const handleSelectLine = (line) => {
     setSelectLine(line);
@@ -23,15 +31,6 @@ export default function App() {
   const handleChange = (e) => {
     setSearchTerm(e.target.value);
   }
-
-  useEffect(() => {
-    axios.get('https://apiservice-ksabee.herokuapp.com/users')
-    .then(
-      (res) => 
-      setData(res.data));    
-    console.log('api load');
-    console.log(data);
-  }, []);
 
   return (
     <div className="App">
