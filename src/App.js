@@ -14,7 +14,7 @@ export default function App() {
 
   if (!loading) {
     if (!error) {
-      console.log(data);
+      // console.log(data);
     } else {
       console.error(error);
     }

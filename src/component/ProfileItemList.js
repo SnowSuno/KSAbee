@@ -3,13 +3,16 @@ import ProfileItem from './ProfileItem'
 import './ProfileItemList.css'
 
 const ProfileItemList = ({data, selectLine, selectBatch, searchTerm}) => {
+  function addIndex({userInfo, index}) {
+    return {
+      ...userInfo,
+      id: index+1
+    }
+  }
+
   const profileFilter = (userInfo) => {
-    var result = userInfo.filter(info =>
-      info['nickName'].includes(searchTerm) ||
-      info['studentID'].includes(searchTerm) ||
-      info['tier'].includes(searchTerm) ||
-      String(info['level']).includes(searchTerm)
-    );
+    // position, batch 부터
+    var result = userInfo;
 
     if (selectLine !== 'All') {
       result = result.filter(userInfo =>
@@ -22,6 +25,21 @@ const ProfileItemList = ({data, selectLine, selectBatch, searchTerm}) => {
         userInfo['studentID'].slice(0,2) === selectBatch
       );
     }
+
+    // add id
+    result = result.map(
+      (userInfo, index) => addIndex({userInfo, index})
+    );
+
+    // search Term filter
+    result = result.filter(info =>
+      info['nickName'].includes(searchTerm) ||
+      info['studentID'].includes(searchTerm) ||
+      info['studentName'].includes(searchTerm) ||
+      info['tier'].includes(searchTerm) ||
+      String(info['level']).includes(searchTerm)
+    );
+
     return result;
   }
 
@@ -48,7 +66,6 @@ const ProfileItemList = ({data, selectLine, selectBatch, searchTerm}) => {
             (userInfo, index) => 
             <ProfileItem
               info = {userInfo}
-              index = {index}
               key = {userInfo['studentID']}
             />)}
         </tbody>      
