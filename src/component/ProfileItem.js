@@ -1,13 +1,13 @@
 import React from 'react'
 import './ProfileItem.css'
 
-const ProfileItem = ({ info }) => {
+const ProfileItem = ({ info, index }) => {
     const positionImgUrl = './img/position/' + info['position'] + '.png';
 
     return (
         <tr className="profileItem">
             <td>
-                id
+                {index+1}
             </td>
             <td>
                 <img className="profileImg" src={info['profileImg']} alt="profile-img"/>
@@ -26,12 +26,9 @@ const ProfileItem = ({ info }) => {
             </td>
             <td>
                 <div className="gameLog">
-                    <div className="winCount" style={{width: `${info['tierInfo']['winRate']}%`}}>
-                        {info['tierInfo']['wins']}
-                    </div>
-                    <div className="lossCount">
-                        {info['tierInfo']['losses']}
-                    </div>
+                    <div className="winBox" style={{width: `${info['tierInfo']['winRate']}%`}}></div>
+                    <p className="winNumber">{info['tierInfo']['wins']}</p>
+                    <p className="lossNumber">{info['tierInfo']['losses']}</p>
                 </div>
             </td>
             <td>
@@ -43,6 +40,5 @@ const ProfileItem = ({ info }) => {
         </tr>
     )
 }
-
 
 export default ProfileItem;
