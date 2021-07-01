@@ -65,11 +65,11 @@ td:nth-child(5) {
 
 /* 레벨 */
 th:nth-child(6) {
-    width: 60px;
+    width: 80px;
 }
 
 td:nth-child(6) {
-    width: 60px;
+    width: 80px;
 }
 
 /* 승, 패수 */
@@ -83,11 +83,11 @@ td:nth-child(7) {
 
 /* 승률 */
 th:nth-child(8) {
-    width: 60px;
+    width: 80px;
 }
 
 td:nth-child(8) {
-    width: 60px;
+    width: 80px;
 }
 
 /* 포지션 */

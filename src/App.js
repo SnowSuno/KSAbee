@@ -7,7 +7,7 @@ import Footer from './component/Footer.js';
 import useGetApi from './api/useGetApi.js'
 
 export default function App() {
-  const [selectLine, setSelectLine] = useState('All');
+  const [selectLine, setSelectLine] = useState('All'); 
   const [selectBatch, setSelectBatch] = useState('All');
   const [searchTerm, setSearchTerm] = useState('');
   const {data, loading, error} = useGetApi();

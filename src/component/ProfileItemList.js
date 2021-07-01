@@ -1,18 +1,27 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import ProfileItem from './ProfileItem'
 import './ProfileItemList.css'
 
 const ProfileItemList = ({data, selectLine, selectBatch, searchTerm}) => {
+  const [users, setUsers] = useState([]);
+  const [sortBy, setSortBy] = useState('tier'); // tier, level, winRate
+  const [order, setOrder] = useState('INC');
+
+  function onSelectSort(key, ord) {
+    setSortBy(key);
+    setOrder(ord);
+  }
+
   function addIndex({userInfo, index}) {
     return {
       ...userInfo,
-      id: index+1
+      order: index+1
     }
   }
 
-  const profileFilter = (userInfo) => {
+  useEffect(() => {
     // position, batch 부터
-    var result = userInfo;
+    var result = data;
 
     if (selectLine !== 'All') {
       result = result.filter(userInfo =>
@@ -24,6 +33,14 @@ const ProfileItemList = ({data, selectLine, selectBatch, searchTerm}) => {
       result = result.filter(userInfo =>
         userInfo['studentID'].slice(0,2) === selectBatch
       );
+    }
+
+    result.sort(function(a, b) {
+      return value(sortBy, a) < value(sortBy, b) ? -1 : value(sortBy, a) > value(sortBy, b) ? 1 : 0;
+    });
+
+    if (order === 'DESC') {
+      result = result.reverse();
     }
 
     // add id
@@ -40,8 +57,15 @@ const ProfileItemList = ({data, selectLine, selectBatch, searchTerm}) => {
       String(info['level']).includes(searchTerm)
     );
 
-    return result;
+    setUsers(result);
+  }, [searchTerm, selectBatch, selectLine, data, sortBy, order]);
+  
+  function value(key, user) {
+    if (key === 'tier') return user['index'];
+    if (key === 'level')  return user['level'];
+    if (key === 'winRate')  return user['tierInfo']['winRate'];
   }
+  
 
   return (
     <div className="profileItemList">
@@ -52,17 +76,41 @@ const ProfileItemList = ({data, selectLine, selectBatch, searchTerm}) => {
             <th>프로필</th>
             <th>소환사</th>
             <th>학번 / 이름</th>
-            <th>티어</th>
-            <th>레벨</th>
+            <th>
+              티어
+              <button onClick={() => {onSelectSort("tier", "INC")}}>
+                <img src="./../img/sort-inc.png" alt="sort" />
+              </button>
+              <button onClick={() => {onSelectSort("tier", "DESC")}}>
+                <img src="./../img/sort-desc.png" alt="sort" />
+              </button>
+            </th>
+            <th>
+              레벨
+              <button onClick={() => {onSelectSort('level', 'INC')}}>
+                <img src="./../img/sort-inc.png" alt="sort" />
+              </button>
+              <button onClick={() => {onSelectSort('level', 'DESC')}}>
+                <img src="./../img/sort-desc.png" alt="sort" />
+              </button>
+            </th>
             <th></th>
-            <th>승률</th>
+            <th>
+              승률
+              <button onClick={() => {onSelectSort('winRate', 'INC')}}>
+                <img src="./../img/sort-inc.png" alt="sort" />
+              </button>
+              <button onClick={() => {onSelectSort('winRate', 'DESC')}}>
+                <img src="./../img/sort-desc.png" alt="sort" />
+              </button>
+            </th>
             <th>포지션</th>
           </tr>
         </thead>
 
         <tbody>
           {data !== undefined &&
-          profileFilter(data).map(
+          users.map(
             (userInfo, index) => 
             <ProfileItem
               info = {userInfo}
