@@ -7,7 +7,7 @@ const ProfileItem = ({ info, index }) => {
     return (
         <tr className="profileItem">
             <td>
-                {index+1}
+                {info['order']}
             </td>
             <td>
                 <img className="profileImg" src={info['profileImg']} alt="profile-img"/>

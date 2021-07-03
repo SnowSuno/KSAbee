@@ -20,3 +20,30 @@ tr {
     border-radius: 10px;
     box-shadow:  0 0 40px rgba(0,0,0,0.05);
 }
+
+th button img {
+    width: 10px;
+    height: 15px;
+}
+
+th button {
+    width: 20px;
+    height: 20px;
+    background-color: #fff;
+    border: 1px solid #ffd27f;
+}
+
+th button:nth-child(1) {
+    margin-left: 5px;
+    border-radius: 10px 0 0 10px;
+    border-width: 1px 0 1px 1px;
+}
+
+th button:nth-child(2) {
+    border-radius: 0 10px 10px 0;
+    border-width: 1px 1px 1px 0;
+}
+
+th button:hover {
+    background-color: #fff6e5;
+}

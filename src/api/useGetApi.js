@@ -14,6 +14,7 @@ function useGetApi() {
             setData([]);
             setLoading(true);
             const response = await axios.get(USER_API);
+            console.log('get api', response.data);
             setData(response.data);
         } catch (error) {
             setError(error);
