@@ -133,3 +133,35 @@ td:nth-child(9) {
     height: 40px;
     margin: auto 0 auto 0;
 }
+
+@media (max-width:768px) {
+    th:nth-child(6) {
+        display: none;
+    }
+    
+    td:nth-child(6) {
+        display: none;
+    }
+    
+    th:nth-child(7) {
+        display: none;
+    }
+    
+    td:nth-child(7) {
+        display: none;
+    }
+}
+
+@media (max-width: 478px) {
+    .profileImg {
+        height: 60px;
+    }
+
+    th:nth-child(8) {
+        display: none;
+    }
+    
+    td:nth-child(8) {
+        display: none;
+    }
+}
