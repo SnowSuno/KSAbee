@@ -78,31 +78,37 @@ const ProfileItemList = ({data, selectLine, selectBatch, searchTerm}) => {
             <th>학번 / 이름</th>
             <th>
               티어
-              <button onClick={() => {onSelectSort("tier", "INC")}}>
-                <img src="./../img/sort-inc.png" alt="sort" />
-              </button>
-              <button onClick={() => {onSelectSort("tier", "DESC")}}>
-                <img src="./../img/sort-desc.png" alt="sort" />
-              </button>
+              <div className="buttons">
+                <button onClick={() => {onSelectSort("tier", "INC")}}>
+                  <img src="./../img/sort-inc.png" alt="sort" />
+                </button>
+                <button onClick={() => {onSelectSort("tier", "DESC")}}>
+                  <img src="./../img/sort-desc.png" alt="sort" />
+                </button>
+              </div>
             </th>
             <th>
               레벨
-              <button onClick={() => {onSelectSort('level', 'INC')}}>
-                <img src="./../img/sort-inc.png" alt="sort" />
-              </button>
-              <button onClick={() => {onSelectSort('level', 'DESC')}}>
-                <img src="./../img/sort-desc.png" alt="sort" />
-              </button>
+              <div className="buttons">
+                <button onClick={() => {onSelectSort('level', 'INC')}}>
+                  <img src="./../img/sort-inc.png" alt="sort" />
+                </button>
+                <button onClick={() => {onSelectSort('level', 'DESC')}}>
+                  <img src="./../img/sort-desc.png" alt="sort" />
+                </button>
+              </div>
             </th>
             <th></th>
             <th>
               승률
-              <button onClick={() => {onSelectSort('winRate', 'INC')}}>
-                <img src="./../img/sort-inc.png" alt="sort" />
-              </button>
-              <button onClick={() => {onSelectSort('winRate', 'DESC')}}>
-                <img src="./../img/sort-desc.png" alt="sort" />
-              </button>
+              <div className="buttons">
+                <button onClick={() => {onSelectSort('winRate', 'INC')}}>
+                  <img src="./../img/sort-inc.png" alt="sort" />
+                </button>
+                <button onClick={() => {onSelectSort('winRate', 'DESC')}}>
+                  <img src="./../img/sort-desc.png" alt="sort" />
+                </button>
+              </div>
             </th>
             <th>포지션</th>
           </tr>
