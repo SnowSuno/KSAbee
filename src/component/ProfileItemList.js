@@ -61,9 +61,10 @@ const ProfileItemList = ({data, selectLine, selectBatch, searchTerm}) => {
   }, [searchTerm, selectBatch, selectLine, data, sortBy, order]);
   
   function value(key, user) {
+    const matches = user['wins'] + user['losses'];
     if (key === 'tier') return user['index'];
     if (key === 'level')  return user['level'];
-    if (key === 'winRate')  return user['tierInfo']['winRate'];
+    if (key === 'winRate')  return matches === 0 ? 0 : (100*user['wins']/matches).toFixed(1);;
   }
   
 
