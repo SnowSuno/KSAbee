@@ -31,7 +31,7 @@ const ProfileItemList = ({data, selectLine, selectBatch, searchTerm}) => {
     
     if (selectBatch !== 'All') {
       result = result.filter(userInfo =>
-        userInfo['studentID'].slice(0,2) === selectBatch
+        userInfo['user']['sid'].slice(0,2) === selectBatch
       );
     }
 
@@ -50,9 +50,9 @@ const ProfileItemList = ({data, selectLine, selectBatch, searchTerm}) => {
 
     // search Term filter
     result = result.filter(info =>
-      info['nickName'].includes(searchTerm) ||
-      info['studentID'].includes(searchTerm) ||
-      info['studentName'].includes(searchTerm) ||
+      info['nickname'].includes(searchTerm) ||
+      info['user']['sid'].includes(searchTerm) ||
+      info['studentname'].includes(searchTerm) ||
       info['tier'].includes(searchTerm) ||
       String(info['level']).includes(searchTerm)
     );
@@ -61,9 +61,10 @@ const ProfileItemList = ({data, selectLine, selectBatch, searchTerm}) => {
   }, [searchTerm, selectBatch, selectLine, data, sortBy, order]);
   
   function value(key, user) {
+    const matches = user['wins'] + user['losses'];
     if (key === 'tier') return user['index'];
     if (key === 'level')  return user['level'];
-    if (key === 'winRate')  return user['tierInfo']['winRate'];
+    if (key === 'winRate')  return matches === 0 ? 0 : (100*user['wins']/matches).toFixed(1);;
   }
   
 
