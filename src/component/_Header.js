@@ -1,7 +1,7 @@
 import React from 'react';
 import './Header.css';
 
-const Header = () => {
+const _Header = () => {
   return (
   <div className="header">
     <img className="bee_img" src="/img/sadBee.jpg" alt="bee-logo"/>
@@ -11,4 +11,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default _Header;

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-const USER_API = "https://apiservice-ksabee.herokuapp.com/users";
+const USER_API = "https://api-ksabee.herokuapp.com/api/account/";
 
 function useGetApi() {
     const [data, setData] = useState([]);
