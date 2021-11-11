@@ -18,6 +18,12 @@ export interface AccountType {
     losses: number;
 }
 
+export interface AccountStateType {
+  data: AccountType[];
+  loading: boolean;
+  error: Error | null;
+}
+
 interface AccountRequestBase {
     password: string;
 }

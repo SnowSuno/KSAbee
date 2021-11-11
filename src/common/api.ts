@@ -2,9 +2,10 @@ import axios, {AxiosResponse} from "axios";
 import {AccountType, AccountCreate, AccountUpdate, AccountDelete, ResponseMessageType} from "./types";
 
 
-const instance = axios.create({
-    baseURL: "https://api-ksabee.herokuapp.com/api/"
+export const instance = axios.create({
+    baseURL: "https://api-ksabee.herokuapp.com/api/",
 });
+instance.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
 
 const responseBody = (response: AxiosResponse) => response.data;
 
