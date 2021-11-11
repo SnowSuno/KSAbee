@@ -5,8 +5,6 @@ import {AccountType, AccountCreate, AccountUpdate, AccountDelete, ResponseMessag
 export const instance = axios.create({
     baseURL: "https://api-ksabee.herokuapp.com/api/",
 });
-// instance.defaults.headers.common['Origin'] = 'http://127.0.0.1:3000';
-// instance.defaults.withCredentials = true;
 
 const responseBody = (response: AxiosResponse) => response.data;
 
@@ -18,7 +16,7 @@ const requests = {
 };
 
 export const Account = {
-    getAccounts: (): Promise<AccountType[]> => requests.get('account/'),
+    getAccounts: (): Promise<AccountType[]> => requests.get('account'),
     getAccount: (sid: string): Promise<AccountType> => requests.get(`account/${sid}`),
     createAccount: (sid: string, body: AccountCreate): Promise<ResponseMessageType> =>
         requests.post(`account/${sid}`, body),

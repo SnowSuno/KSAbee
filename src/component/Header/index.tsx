@@ -7,7 +7,6 @@ function Header() {
     <img src={logo} alt="logo img" />
     KSABee
     KSA LOL랭킹 사이트
-    ㅇㅇ
   </div>
   );
 }

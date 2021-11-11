@@ -5,7 +5,6 @@ import {Account, instance} from "./common/api";
 import Header from "./component/Header";
 import Toolbar from "./component/Toolbar";
 import ProfileList from "./component/ProfileList";
-import axios from "axios";
 
 
 export default function App() {
@@ -19,14 +18,6 @@ export default function App() {
     useEffect(() => {
       const d = Account.getAccounts();
       console.log(d);
-      // const d = instance.get('account').then((response) => response.data);
-      // console.log(d);
-      // const d = axios.get('https://api-ksabee.herokuapp.com/api/account/');
-      // console.log(d)
-      // const d = s.reload();
-      // console.log(s.state)
-
-      // console.log(d)
     }, [])
 
 
@@ -47,7 +38,6 @@ export default function App() {
     //         console.error(error);
     //     }
     // }
-
 
     return (
         <div>
