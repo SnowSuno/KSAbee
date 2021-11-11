@@ -1,10 +1,11 @@
 import React, {useEffect, useState} from "react";
 import {useAccountList} from "./common/hooks";
-import { instance } from "./common/api";
+import {Account, instance} from "./common/api";
 
 import Header from "./component/Header";
 import Toolbar from "./component/Toolbar";
 import ProfileList from "./component/ProfileList";
+import axios from "axios";
 
 
 export default function App() {
@@ -16,10 +17,10 @@ export default function App() {
     console.log(s.reload)
 
     useEffect(() => {
-      // const d = Account.getAccounts();
-      console.log(instance);
-      const d = instance.get('account').then((response) => response.data);
+      const d = Account.getAccounts();
       console.log(d);
+      // const d = instance.get('account').then((response) => response.data);
+      // console.log(d);
       // const d = axios.get('https://api-ksabee.herokuapp.com/api/account/');
       // console.log(d)
       // const d = s.reload();
