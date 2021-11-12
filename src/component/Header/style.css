@@ -1,0 +1,29 @@
+.header {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 10px 100px 0 100px;
+  height: 80px;
+  background-color: bisque;
+}
+
+.header__img {
+  width: 60px;
+  height: 60px;
+  padding: 0 20px 0 0;
+}
+
+.header__text span:nth-child(1) {
+  font-size: 28px;
+  color: #aaa;
+}
+
+.header__text span:nth-child(2) {
+  font-size: 28px;
+  color:aquamarine;
+}
+
+.header__text span:nth-child(4) {
+  font-weight: 200;
+  font-size: 14px;
+}
