@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import { Account } from "./common/api";
 import { AccountType } from "./common/types";
+
 import Header from "./component/Header";
 import Toolbar from "./component/Toolbar";
 import ProfileList from "./component/ProfileList";

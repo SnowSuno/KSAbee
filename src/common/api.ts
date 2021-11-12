@@ -17,11 +17,11 @@ const requests = {
 
 export const Account = {
     getAccounts: async (): Promise<AccountType[]> => requests.get('account'),
-    getAccount: (sid: string): Promise<AccountType> => requests.get(`account/${sid}`),
-    createAccount: (sid: string, body: AccountCreate): Promise<ResponseMessageType> =>
+    getAccount: async (sid: string): Promise<AccountType> => requests.get(`account/${sid}`),
+    createAccount: async (sid: string, body: AccountCreate): Promise<ResponseMessageType> =>
         requests.post(`account/${sid}`, body),
-    updateAccount: (sid: string, body: AccountUpdate): Promise<ResponseMessageType> =>
+    updateAccount: async (sid: string, body: AccountUpdate): Promise<ResponseMessageType> =>
         requests.put(`account/${sid}`, body),
-    deleteAccount: (sid: string, body: AccountDelete): Promise<ResponseMessageType> =>
+    deleteAccount: async (sid: string, body: AccountDelete): Promise<ResponseMessageType> =>
         requests.delete(`account/${sid}`, body)
 }
