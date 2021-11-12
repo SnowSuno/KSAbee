@@ -1,7 +1,7 @@
 import {useState} from "react";
 import {Account} from "./api";
 
-import {AccountStateType, AccountType} from "./types";
+import {AccountStateType} from "./types";
 
 export const useAccountList = () => {
   const [state, setState] = useState<AccountStateType>({
@@ -9,6 +9,7 @@ export const useAccountList = () => {
     loading: false,
     error: null,
   })
+  console.log(state);
 
   const reload = async () => {
     try {
@@ -21,6 +22,7 @@ export const useAccountList = () => {
       setState({...state, loading: false})
     }
   }
+  reload();
 
-  return {state, reload};
+  return state;
 };

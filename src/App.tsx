@@ -1,49 +1,39 @@
 import React, {useEffect, useState} from "react";
-import {useAccountList} from "./common/hooks";
-import {Account, instance} from "./common/api";
-
+import { Account } from "./common/api";
+import { AccountType } from "./common/types";
 import Header from "./component/Header";
 import Toolbar from "./component/Toolbar";
 import ProfileList from "./component/ProfileList";
 
 
 export default function App() {
-    // const [sort, setSort] = useState({
-    //     key: 'tier',
-    //     reverse: false,
-    // });
-    const s = useAccountList();
-    console.log(s.reload)
+  const [loading, setLoading] = useState<boolean>(true);
+  const [accountList, setAccountList] = useState<AccountType[]>([]);
+  console.log(loading, accountList);
+  // const [sort, setSort] = useState({
+  //     key: 'tier',
+  //     reverse: false,
+  // });
 
-    useEffect(() => {
-      const d = Account.getAccounts();
-      console.log(d);
-    }, [])
+  useEffect(() => {
+    async function fetchApi() {
+      try {
+        const userAccountList = await Account.getAccounts();
+        setAccountList(userAccountList);
+      } catch (e){
+        console.log(e)
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchApi();
+  }, [])
 
-
-    // const {
-    //     state: {data, loading, error},
-    //     reload
-    // } = useAccountList();
-    // console.log(reload)
-
-    // useEffect(() => {
-    //     reload().then();
-    // }, [reload])
-
-    // if (!loading) {
-    //     if (!error) {
-    //         // console.log(data);
-    //     } else {
-    //         console.error(error);
-    //     }
-    // }
-
-    return (
-        <div>
-            <Header />
-            <Toolbar />
-            <ProfileList />
-        </div>
-    );
+  return (
+    <div>
+      <Header />
+      <Toolbar />
+      <ProfileList />
+    </div>
+  );
 }

@@ -16,7 +16,7 @@ const requests = {
 };
 
 export const Account = {
-    getAccounts: (): Promise<AccountType[]> => requests.get('account'),
+    getAccounts: async (): Promise<AccountType[]> => requests.get('account'),
     getAccount: (sid: string): Promise<AccountType> => requests.get(`account/${sid}`),
     createAccount: (sid: string, body: AccountCreate): Promise<ResponseMessageType> =>
         requests.post(`account/${sid}`, body),
