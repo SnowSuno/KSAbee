@@ -1,5 +1,8 @@
 import React, {useState, useEffect} from "react";
 
+import ProfileTableHead from './ProfileTableHead'
+import './style.css'
+
 import { AccountType } from "../../common/types";
 import { Account } from "../../common/api";
 
@@ -27,9 +30,9 @@ function ProfileList() {
   }, [])
 
   return (
-    <div>
-      ddd
-    </div>
+    <table className="profileTable">
+      <ProfileTableHead />
+    </table>
   );
 }
 
