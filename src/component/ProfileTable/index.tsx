@@ -1,12 +1,14 @@
 import React, {useState, useEffect} from "react";
 
 import ProfileTableHead from './ProfileTableHead'
+import ProfileTableItem from "./ProfileTableItem";
 import './style.css'
 
 import { AccountType } from "../../common/types";
 import { Account } from "../../common/api";
+import ProfileItem from "../ProfileItem";
 
-function ProfileList() {
+function ProfileTable() {
   const [loading, setLoading] = useState<boolean>(true);
   const [accountList, setAccountList] = useState<AccountType[]>([]);
   console.log(loading, accountList);
@@ -31,9 +33,22 @@ function ProfileList() {
 
   return (
     <table className="profileTable">
-      <ProfileTableHead />
+      <thead>
+        <ProfileTableHead />
+      </thead>
+      <tbody>
+        {accountList !== undefined &&
+        accountList.map(
+          (data) =>
+            <ProfileTableItem
+              account={data}
+              key={data.summoner_id}
+            />
+
+        )}
+      </tbody>
     </table>
   );
 }
 
-export default ProfileList;
+export default ProfileTable;
