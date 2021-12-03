@@ -5,6 +5,7 @@ const ProfileTableHead = () => {
     <tr>
       <th>순위</th>
       <th>프로필</th>
+      <th></th>
       <th>티어</th>
       <th>레벨</th>
       <th>승률</th>

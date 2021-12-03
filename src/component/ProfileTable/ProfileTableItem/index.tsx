@@ -27,6 +27,8 @@ const ProfileTableItem: React.FC<ProfileTableItemProps> = ({account}) => {
       </td>
       <td className="profileItem__profile">
         <img className="profileImg" src={account.profile_image} alt="profile image" />
+      </td>
+      <td>
         {account.user.sid} {account.user.name}
       </td>
       <td>
