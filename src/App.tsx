@@ -15,7 +15,7 @@ export default function App() {
     setGrade(value);
   }
 
-  const handleSearchWord = (event: React.ChangeEvent<HTMLSelectElement>) => {
+  const handleSearchWord = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value;
     setSearchWord(value);
   }
