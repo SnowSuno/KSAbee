@@ -4,6 +4,9 @@ import Header from "./component/Header";
 import Toolbar from "./component/Toolbar";
 import ProfileTable from "./component/ProfileTable";
 import Footer from "./component/Footer"
+import RegisterModal from "./component/Modal/RegisterModal"
+import UpdateModal from "./component/Modal/UpdateModal";
+import DeleteModal from "./component/Modal/DeleteModal";
 
 export default function App() {
   const [grade, setGrade] = useState<number>(19);
@@ -36,6 +39,9 @@ export default function App() {
       />
       <ProfileTable />
       <Footer />
+      <RegisterModal />
+      <UpdateModal/>
+      <DeleteModal/>
     </div>
   );
 }
