@@ -14,40 +14,40 @@ type ProfileTableItemProps = {
 }
 
 const ProfileTableItem: React.FC<ProfileTableItemProps> = ({account}) => {
-  const winRate = (account.wins/(account.wins+account.losses)).toFixed(1);
-
-  const positionImage = (position: String) => {
-    if (position === 'top') return <img src={top} />
-  }
+  const matches = account.wins + account.losses;
+  const winRate = matches === 0 ? 0 
+    : (account.wins/(account.wins+account.losses)).toFixed(1);
 
   return (
     <tr className="profileItem">
-      <td className="profileItem__rank">
+      <td className="rank">
         account
       </td>
-      <td className="profileItem__profile">
-        <img className="profileImg" src={account.profile_image} alt="profile image" />
+      <td className="profile">
+        <img className="profile__img" src={account.profile_image} alt="profile img" />
       </td>
-      <td>
-        {account.user.sid} {account.user.name}
+      <td className="user">
+        <p>{account.nickname}</p>
+        <p>{account.user.sid} {account.user.name}</p>
       </td>
-      <td>
-        {account.tier}
+      <td className="tier">
+        <p>{account.tier}</p>
+        <p>{account.league_points}LP</p>
       </td>
-      <td>
-        {account.level}
+      <td className="level">
+        Lv. {account.level}
       </td>
-      <td>
-        {winRate}%
-        {account.wins}/{account.losses}
+      <td className="gmaeInfo">
+        <p className="winRate">{winRate}%</p>
+        <p className="matches">{account.wins}/{account.losses}</p>
       </td>
-      <td>
+      <td className="position">
         {
-          account.position === 'top' ? <img src={top} />
-          : account.position === 'jg' ? <img src={jg} />
-          : account.position === 'mid' ? <img src={mid} />
-          : account.position === 'bot' ? <img src={bot} />
-          : <img src={sup} />
+          account.position === 'top' ? <img src={top} alt="top img" />
+          : account.position === 'jg' ? <img src={jg} alt="jg img" />
+          : account.position === 'mid' ? <img src={mid} alt="mid img" />
+          : account.position === 'bot' ? <img src={bot} alt="bot img" />
+          : <img src={sup} alt="sup img" />
         }
       </td>
     </tr>
