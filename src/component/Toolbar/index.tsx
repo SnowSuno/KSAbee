@@ -1,11 +1,20 @@
 import React from "react";
 
-function Toolbar() {
-    return (
-        <div>
+import GradeButton from "./gradeButton"
 
-        </div>
-    );
+
+function Toolbar() {
+  return (
+    <div>
+      <GradeButton/>
+      
+      <input
+        type={"text"}
+        className={"searchInput"} 
+        placeholder={"Search"}
+      />
+    </div>
+  );
 }
 
 export default Toolbar;

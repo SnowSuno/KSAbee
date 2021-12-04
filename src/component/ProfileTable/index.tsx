@@ -6,7 +6,6 @@ import './style.css'
 
 import { AccountType } from "../../common/types";
 import { Account } from "../../common/api";
-import ProfileItem from "../ProfileItem";
 
 function ProfileTable() {
   const [loading, setLoading] = useState<boolean>(true);
