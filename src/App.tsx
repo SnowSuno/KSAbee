@@ -8,7 +8,9 @@ import Footer from "./component/Footer"
 export default function App() {
   const [grade, setGrade] = useState<number>(19);
   const [searchWord, setSearchWord] = useState<string>('');
-  console.log(grade, searchWord);
+  const [showModal, setShowModal] = useState<Boolean>(false);
+  
+  console.log(grade, searchWord, showModal);
 
   const handleGrade = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const value = parseInt(event.target.value);
@@ -20,12 +22,17 @@ export default function App() {
     setSearchWord(value);
   }
 
+  const handleShowModal = () => {
+    setShowModal(!showModal);
+  }
+
   return (
     <div>
       <Header />
       <Toolbar 
         handleGrade={handleGrade}
         handleSearchWord={handleSearchWord}
+        handleShowModal={handleShowModal}
       />
       <ProfileTable />
       <Footer />
