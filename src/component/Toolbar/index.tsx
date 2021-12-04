@@ -2,11 +2,17 @@ import React from "react";
 
 import GradeButton from "./gradeButton"
 
+interface ToolBarProps {
+  handleGrade: (input: React.ChangeEvent<HTMLSelectElement>) => void;
+  handleSearchWord: (input: React.ChangeEvent<HTMLSelectElement>) => void;
+}
 
-function Toolbar() {
+function Toolbar({handleGrade, handleSearchWord}: ToolBarProps) {
   return (
     <div>
-      <GradeButton/>
+      <GradeButton
+        handleGrade={handleGrade}
+      />
       
       <input
         type={"text"}
