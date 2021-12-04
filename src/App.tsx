@@ -1,40 +1,41 @@
-import React, {useEffect, useState} from "react";
-import { Account } from "./common/api";
-import { AccountType } from "./common/types";
+import React, {useState} from "react";
 
 import Header from "./component/Header";
 import Toolbar from "./component/Toolbar";
-import ProfileList from "./component/ProfileList";
-
+import ProfileTable from "./component/ProfileTable";
+import Footer from "./component/Footer"
 
 export default function App() {
-  const [loading, setLoading] = useState<boolean>(true);
-  const [accountList, setAccountList] = useState<AccountType[]>([]);
-  console.log(loading, accountList);
-  // const [sort, setSort] = useState({
-  //     key: 'tier',
-  //     reverse: false,
-  // });
+  const [grade, setGrade] = useState<number>(19);
+  const [searchWord, setSearchWord] = useState<string>('');
+  const [showModal, setShowModal] = useState<Boolean>(false);
+  
+  console.log(grade, searchWord, showModal);
 
-  useEffect(() => {
-    async function fetchApi() {
-      try {
-        const userAccountList = await Account.getAccounts();
-        setAccountList(userAccountList);
-      } catch (e){
-        console.log(e)
-      } finally {
-        setLoading(false);
-      }
-    }
-    fetchApi();
-  }, [])
+  const handleGrade = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    const value = parseInt(event.target.value);
+    setGrade(value);
+  }
+
+  const handleSearchWord = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const value = event.target.value;
+    setSearchWord(value);
+  }
+
+  const handleShowModal = () => {
+    setShowModal(!showModal);
+  }
 
   return (
     <div>
       <Header />
-      <Toolbar />
-      <ProfileList />
+      <Toolbar 
+        handleGrade={handleGrade}
+        handleSearchWord={handleSearchWord}
+        handleShowModal={handleShowModal}
+      />
+      <ProfileTable />
+      <Footer />
     </div>
   );
 }
