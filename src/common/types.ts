@@ -29,6 +29,7 @@ interface AccountRequestBase {
 }
 
 export interface AccountCreate extends AccountRequestBase {
+    password: string;
     nickname: string;
     position: string;
 }
