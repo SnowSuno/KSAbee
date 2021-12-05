@@ -2,12 +2,11 @@ import React from "react";
 
 import GradeButton from "./gradeButton"
 import SearchTextInput from "./searchTextInput"
-import ModalButton from "./ModalButton"
 
 interface ToolBarProps {
   handleGrade: (input: React.ChangeEvent<HTMLSelectElement>) => void;
   handleSearchWord: (input: React.ChangeEvent<HTMLInputElement>) => void;
-  handleShowModal: () => void;
+  handleShowModal: (input: string) => void;
 }
 
 function Toolbar({handleGrade, handleSearchWord, handleShowModal}: ToolBarProps) {
@@ -15,7 +14,9 @@ function Toolbar({handleGrade, handleSearchWord, handleShowModal}: ToolBarProps)
     <div>
       <GradeButton handleGrade={handleGrade} />
       <SearchTextInput handleSearchWord={handleSearchWord} />
-      <ModalButton handleShowModal={handleShowModal} />
+      <button onClick={() => handleShowModal('register')}>등록</button>
+      <button onClick={() => handleShowModal('update')}>계정 수정</button>
+      <button onClick={() => handleShowModal('delete')}>계정 삭제</button>
     </div>
   );
 }

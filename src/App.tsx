@@ -4,14 +4,12 @@ import Header from "./component/Header";
 import Toolbar from "./component/Toolbar";
 import ProfileTable from "./component/ProfileTable";
 import Footer from "./component/Footer"
-import RegisterModal from "./component/Modal/RegisterModal"
-import UpdateModal from "./component/Modal/UpdateModal";
-import DeleteModal from "./component/Modal/DeleteModal";
+import Modal from "./component/Modal";
 
 export default function App() {
   const [grade, setGrade] = useState<number>(19);
   const [searchWord, setSearchWord] = useState<string>('');
-  const [showModal, setShowModal] = useState<Boolean>(false);
+  const [showModal, setShowModal] = useState<string>('null');
   
   console.log(grade, searchWord, showModal);
 
@@ -25,8 +23,8 @@ export default function App() {
     setSearchWord(value);
   }
 
-  const handleShowModal = () => {
-    setShowModal(!showModal);
+  const handleShowModal = (modalName: string) => {
+    setShowModal(modalName);
   }
 
   return (
@@ -39,9 +37,10 @@ export default function App() {
       />
       <ProfileTable />
       <Footer />
-      <RegisterModal />
-      <UpdateModal/>
-      <DeleteModal/>
+      <Modal
+        showModal={showModal}
+        handleShowModal={handleShowModal}
+      />
     </div>
   );
 }
