@@ -70,9 +70,14 @@ const RegisterModal = ({handleShowModal}: RegisterModalProps) => {
       </div>
 
       <button
-        onClick={() => {
-          handleShowModal('null');
-          Account.createAccount(studentID, body);
+        onClick={async () => {
+          try {
+            await Account.createAccount(studentID, body);
+          } catch(error) {
+            console.log(error);
+          } finally {
+            handleShowModal('null');
+          }
         }}
       >
         등록
