@@ -34,9 +34,11 @@ export interface AccountCreate extends AccountRequestBase {
     position: string;
 }
 export interface AccountUpdate extends AccountRequestBase {
+    password: string;
     nickname?: string;
     position?: string;
 }
+
 export interface AccountDelete extends AccountRequestBase {
 
 }

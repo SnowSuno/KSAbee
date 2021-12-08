@@ -21,7 +21,7 @@ const Modal = ({showModal, handleShowModal}: ModalProps) => {
           {showModal === 'register'
             ? <RegisterModal handleShowModal={handleShowModal} />
             : showModal === 'update'
-            ? <UpdateModal/>
+            ? <UpdateModal handleShowModal={handleShowModal} />
             : showModal === 'delete'
             ? <DeleteModal/>
             : ''

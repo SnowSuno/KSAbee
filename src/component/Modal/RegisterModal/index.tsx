@@ -36,7 +36,10 @@ const RegisterModal = ({handleShowModal}: RegisterModalProps) => {
         <input 
           type="text"
           placeholder="19-000"
-          onChange={(e) => setStudentID(e.currentTarget.value)}
+          onChange={
+            (e: React.ChangeEvent<HTMLInputElement>) =>
+              setStudentID(e.currentTarget.value)
+          }
         />
       </div>
 
@@ -44,7 +47,10 @@ const RegisterModal = ({handleShowModal}: RegisterModalProps) => {
         <span>롤 닉네임</span>
         <input
           type="text"
-          onChange={(e) => setNickname(e.currentTarget.value)}
+          onChange={
+            (e: React.ChangeEvent<HTMLInputElement>) =>
+              setNickname(e.currentTarget.value)
+          }
         />
       </div>
 
@@ -52,14 +58,20 @@ const RegisterModal = ({handleShowModal}: RegisterModalProps) => {
         <span>비밀번호</span>
         <input
           type="password"
-          onChange={(e) => setPassword(e.currentTarget.value)}
+          onChange={
+            (e: React.ChangeEvent<HTMLInputElement>) =>
+              setPassword(e.currentTarget.value)
+          }
         />
       </div>
 
       <div>
         <span>포지션</span>
         <select
-          onChange={(e) => setPosition(e.currentTarget.value)}
+          onChange={
+            (e: React.ChangeEvent<HTMLSelectElement>) =>
+              setPosition(e.currentTarget.value)
+          }
         >
           <option value="top">탑</option>
           <option value="jg">정글</option>
