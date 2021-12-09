@@ -1,6 +1,5 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import {Account} from "../../../common/api";
-import {AccountDelete} from "../../../common/types";
 
 interface DeleteModalProps {
   handleShowModal: (input: string) => void;

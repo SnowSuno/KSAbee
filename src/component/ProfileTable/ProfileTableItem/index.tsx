@@ -10,10 +10,11 @@ import sup from "../../../img/position/sup.png";
 
 type ProfileTableItemProps = {
   account: AccountType;
+  index: number;
   key: number;
 }
 
-const ProfileTableItem: React.FC<ProfileTableItemProps> = ({account}) => {
+const ProfileTableItem: React.FC<ProfileTableItemProps> = ({account, index}) => {
   const matches = account.wins + account.losses;
   const winRate = matches === 0 ? 0 
     : (account.wins/(account.wins+account.losses)).toFixed(1);
@@ -21,7 +22,7 @@ const ProfileTableItem: React.FC<ProfileTableItemProps> = ({account}) => {
   return (
     <tr className="profileItem">
       <td className="rank">
-        account
+        {index}
       </td>
       <td className="profile">
         <img className="profile__img" src={account.profile_image} alt="profile img" />

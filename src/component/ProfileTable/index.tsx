@@ -39,9 +39,10 @@ function ProfileTable() {
       <tbody>
         {accountList !== undefined &&
         accountList.map(
-          (data) =>
+          (data, index) =>
             <ProfileTableItem
               account={data}
+              index={index+1}
               key={data.summoner_id}
             />
 
