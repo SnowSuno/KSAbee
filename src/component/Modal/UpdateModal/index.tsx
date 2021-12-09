@@ -27,8 +27,6 @@ const UpdateModal = ({handleShowModal}: UpdateModalProps) => {
     setChangePosition(!changePosition);
   }
 
-  console.log(body);
-  console.log(changeNickname, changePosition)
   useEffect(() => {
     setBody({
       'password': password,

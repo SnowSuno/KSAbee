@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect, useCallback} from "react";
 
 import ProfileTableHead from './ProfileTableHead'
 import ProfileTableItem from "./ProfileTableItem";
@@ -16,19 +16,20 @@ function ProfileTable() {
   //     reverse: false,
   // });
 
-  useEffect(() => {
-    async function fetchApi() {
-      try {
-        const userAccountList = await Account.getAccounts();
-        setAccountList(userAccountList);
-      } catch (e){
-        console.log(e)
-      } finally {
-        setLoading(false);
-      }
+  const fetchApi = useCallback(async () => {
+    try {
+      const userAccountList = await Account.getAccounts();
+      setAccountList(userAccountList);
+    } catch (e){
+      console.log(e)
+    } finally {
+      setLoading(false);
     }
+  }, []);
+
+  useEffect(() => {
     fetchApi();
-  }, [])
+  }, [fetchApi])
 
   return (
     <table className="profileTable">

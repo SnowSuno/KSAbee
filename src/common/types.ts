@@ -40,7 +40,7 @@ export interface AccountUpdate extends AccountRequestBase {
 }
 
 export interface AccountDelete extends AccountRequestBase {
-
+    password: string;
 }
 
 export interface ResponseMessageType {

@@ -89,6 +89,7 @@ const RegisterModal = ({handleShowModal}: RegisterModalProps) => {
             console.log(error);
           } finally {
             handleShowModal('null');
+
           }
         }}
       >

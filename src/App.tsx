@@ -33,7 +33,7 @@ export default function App() {
       <Toolbar 
         handleGrade={handleGrade}
         handleSearchWord={handleSearchWord}
-        handleShowModal={handleShowModal}
+        handleShowModal ={handleShowModal}
       />
       <ProfileTable />
       <Footer />
