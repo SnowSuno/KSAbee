@@ -7,17 +7,12 @@ interface UpdateModalProps {
 }
 
 const UpdateModal = ({handleShowModal}: UpdateModalProps) => {
-  const accountInitial = {
-    'password': ''
-  }
-
   const [studentID, setStudentID] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
   const [changeNickname, setChangeNickname] = useState(false);
   const [nickname, setNickname] = useState<string>('');
-  const [password, setPassword] = useState<string>('');
   const [changePosition, setChangePosition] = useState(false);
   const [position, setPosition] = useState<string>('top');
-  const [body, setBody] = useState<AccountUpdate>(accountInitial);
 
   const handleChangeNickname = (e:React.ChangeEvent<HTMLInputElement>) => {
     setChangeNickname(!changeNickname);
@@ -27,30 +22,6 @@ const UpdateModal = ({handleShowModal}: UpdateModalProps) => {
     setChangePosition(!changePosition);
   }
 
-  useEffect(() => {
-    setBody({
-      'password': password,
-    })
-
-    if (changeNickname) {
-      setBody(body => {
-         return {
-           ...body,
-           'nickname': nickname
-         }
-      })
-    }
-
-    if (changePosition) {
-      setBody(body => {
-        return {
-          ...body,
-          'position': position
-        }
-      })
-    }
-  }, [password, nickname, position, changeNickname, changePosition])
-  
   return (
     <div>
       <div>
@@ -89,6 +60,7 @@ const UpdateModal = ({handleShowModal}: UpdateModalProps) => {
             (e: React.ChangeEvent<HTMLInputElement>) =>
               setNickname(e.currentTarget.value)
           }
+          disabled={!changeNickname}
         />
       </div>
 
@@ -104,6 +76,7 @@ const UpdateModal = ({handleShowModal}: UpdateModalProps) => {
             (e: React.ChangeEvent<HTMLSelectElement>) =>
               setPosition(e.currentTarget.value)
           }
+          disabled={!changePosition}
         >
           <option value="top">탑</option>
           <option value="jg">정글</option>
@@ -119,7 +92,11 @@ const UpdateModal = ({handleShowModal}: UpdateModalProps) => {
       <button
         onClick={async () => {
           try {
-            await Account.updateAccount(studentID, body);
+            await Account.updateAccount(studentID, {
+                password,
+                nickname: changeNickname ? nickname : undefined,
+                position: changePosition ? position : undefined
+            });
           } catch(error) {
             console.log(error);
           } finally {

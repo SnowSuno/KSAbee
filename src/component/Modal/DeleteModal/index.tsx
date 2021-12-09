@@ -7,21 +7,10 @@ interface DeleteModalProps {
 }
 
 const DeleteModal = ({handleShowModal}: DeleteModalProps) => {
-  const initialBody = {
-    'password': ''
-  };
-
   const [studentID, setStudentID] = useState<string>('');
   const [password, setPassword] = useState<string>('');
-  const [body, setBody] = useState<AccountDelete>(initialBody);
 
   console.log(studentID, password);
-  console.log(body)
-  useEffect(() => {
-    setBody({
-      'password': password
-    })
-  }, [password]);
 
   return (
     <div>
@@ -52,7 +41,7 @@ const DeleteModal = ({handleShowModal}: DeleteModalProps) => {
       <button
         onClick={async () => {
           try {
-            await Account.deleteAccount(studentID, body);
+            await Account.deleteAccount(studentID, {password});
           } catch(error) {
             console.log(error);
           } finally {

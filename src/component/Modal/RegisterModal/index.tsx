@@ -8,32 +8,32 @@ interface RegisterModalProps {
 }
 
 const RegisterModal = ({handleShowModal}: RegisterModalProps) => {
-  const accountInitial = {
-    'password': '',
-    'nickname': '',
-    'position': ''
-  }
+  // const accountInitial = {
+  //   'password': '',
+  //   'nickname': '',
+  //   'position': ''
+  // }
 
   const [studentID, setStudentID] = useState<string>('');
   const [nickname, setNickname] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const [position, setPosition] = useState<string>('top');
-  const [body, setBody] = useState<AccountCreate>(accountInitial);
+  // const [body, setBody] = useState<AccountCreate>(accountInitial);
 
-  console.log(body);
-  useEffect(() => {
-    setBody({
-      'password': password,
-      'nickname': nickname,
-      'position': position
-    })
-  }, [password, nickname, position])
+  // console.log(body);
+  // useEffect(() => {
+  //   setBody({
+  //     'password': password,
+  //     'nickname': nickname,
+  //     'position': position
+  //   })
+  // }, [password, nickname, position])
 
   return (
     <div className="register modal">
       <div>
         <span>학번</span>
-        <input 
+        <input
           type="text"
           placeholder="19-000"
           onChange={
@@ -84,7 +84,7 @@ const RegisterModal = ({handleShowModal}: RegisterModalProps) => {
       <button
         onClick={async () => {
           try {
-            await Account.createAccount(studentID, body);
+            await Account.createAccount(studentID, {password, nickname, position});
           } catch(error) {
             console.log(error);
           } finally {

@@ -12,7 +12,7 @@ const requests = {
     get: (url: string) => instance.get(url).then(responseBody),
     post: (url: string, body: {}) => instance.post(url, body).then(responseBody),
     put: (url: string, body: {}) => instance.put(url, body).then(responseBody),
-    delete: (url: string, body: {}) => instance.delete(url, body).then(responseBody),
+    delete: (url: string, body: {}) => instance.delete(url, {data: body}).then(responseBody),
 };
 
 export const Account = {
