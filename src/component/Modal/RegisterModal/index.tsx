@@ -1,33 +1,17 @@
-import React, {useEffect, useState} from 'react'
-import {AccountCreate} from "../../../common/types";
+import React, {useState} from 'react'
 import {Account} from "../../../common/api";
 import "../style.css"
 
 interface RegisterModalProps {
   handleShowModal: (input: string) => void;
+  fetchUserAccounts: () => Promise<void>
 }
 
-const RegisterModal = ({handleShowModal}: RegisterModalProps) => {
-  // const accountInitial = {
-  //   'password': '',
-  //   'nickname': '',
-  //   'position': ''
-  // }
-
+const RegisterModal = ({handleShowModal, fetchUserAccounts}: RegisterModalProps) => {
   const [studentID, setStudentID] = useState<string>('');
   const [nickname, setNickname] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const [position, setPosition] = useState<string>('top');
-  // const [body, setBody] = useState<AccountCreate>(accountInitial);
-
-  // console.log(body);
-  // useEffect(() => {
-  //   setBody({
-  //     'password': password,
-  //     'nickname': nickname,
-  //     'position': position
-  //   })
-  // }, [password, nickname, position])
 
   return (
     <div className="register modal">
@@ -85,15 +69,17 @@ const RegisterModal = ({handleShowModal}: RegisterModalProps) => {
         onClick={async () => {
           try {
             await Account.createAccount(studentID, {password, nickname, position});
+            await fetchUserAccounts();
           } catch(error) {
             console.log(error);
+            alert('계정추가에 실패하였습니다.')
           } finally {
+            alert('계정을 추가하였습니다.')
             handleShowModal('null');
-
           }
         }}
       >
-        등록
+        계정 등록
       </button>
     </div>
   )

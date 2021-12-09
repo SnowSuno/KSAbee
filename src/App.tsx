@@ -1,12 +1,16 @@
-import React, {useState} from "react";
+import React, {useCallback, useState} from "react";
 
 import Header from "./component/Header";
 import Toolbar from "./component/Toolbar";
 import ProfileTable from "./component/ProfileTable";
 import Footer from "./component/Footer"
 import Modal from "./component/Modal";
+import {AccountType} from "./common/types";
+import {Account} from "./common/api";
 
 export default function App() {
+  const [loading, setLoading] = useState<boolean>(true);
+  const [accountList, setAccountList] = useState<AccountType[]>([]);
   const [grade, setGrade] = useState<number>(19);
   const [searchWord, setSearchWord] = useState<string>('');
   const [showModal, setShowModal] = useState<string>('null');
@@ -27,6 +31,17 @@ export default function App() {
     setShowModal(modalName);
   }
 
+  const fetchUserAccounts = useCallback(async () => {
+    try {
+      const userAccountList = await Account.getAccounts();
+      setAccountList(userAccountList);
+    } catch (e){
+      console.log(e)
+    } finally {
+      setLoading(false);
+    }
+  }, []);
+
   return (
     <div>
       <Header />
@@ -35,11 +50,16 @@ export default function App() {
         handleSearchWord={handleSearchWord}
         handleShowModal ={handleShowModal}
       />
-      <ProfileTable />
+      <ProfileTable
+        accountList={accountList}
+        loading={loading}
+        fetchUserAccounts={fetchUserAccounts}
+      />
       <Footer />
       <Modal
         showModal={showModal}
         handleShowModal={handleShowModal}
+        fetchUserAccounts={fetchUserAccounts}
       />
     </div>
   );

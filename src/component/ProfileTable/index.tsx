@@ -1,35 +1,28 @@
-import React, {useState, useEffect, useCallback} from "react";
+import React, {useEffect} from "react";
 
 import ProfileTableHead from './ProfileTableHead'
 import ProfileTableItem from "./ProfileTableItem";
 import './style.css'
 
 import { AccountType } from "../../common/types";
-import { Account } from "../../common/api";
 
-function ProfileTable() {
-  const [loading, setLoading] = useState<boolean>(true);
-  const [accountList, setAccountList] = useState<AccountType[]>([]);
+interface ProfileTableProps {
+  accountList: AccountType[];
+  loading: boolean;
+  fetchUserAccounts: () => Promise<void>
+}
+function ProfileTable({accountList, loading, fetchUserAccounts}: ProfileTableProps) {
   console.log(loading, accountList);
   // const [sort, setSort] = useState({
   //     key: 'tier',
   //     reverse: false,
   // });
 
-  const fetchApi = useCallback(async () => {
-    try {
-      const userAccountList = await Account.getAccounts();
-      setAccountList(userAccountList);
-    } catch (e){
-      console.log(e)
-    } finally {
-      setLoading(false);
-    }
-  }, []);
+
 
   useEffect(() => {
-    fetchApi();
-  }, [fetchApi])
+    fetchUserAccounts();
+  }, [fetchUserAccounts])
 
   return (
     <table className="profileTable">

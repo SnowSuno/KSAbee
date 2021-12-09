@@ -1,5 +1,4 @@
-import React, {useEffect, useState} from "react";
-import {AccountUpdate} from "../../../common/types";
+import React, {useState} from "react";
 import {Account} from "../../../common/api";
 
 interface UpdateModalProps {
