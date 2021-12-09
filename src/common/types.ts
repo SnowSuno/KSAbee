@@ -29,15 +29,18 @@ interface AccountRequestBase {
 }
 
 export interface AccountCreate extends AccountRequestBase {
+    password: string;
     nickname: string;
     position: string;
 }
 export interface AccountUpdate extends AccountRequestBase {
+    password: string;
     nickname?: string;
     position?: string;
 }
-export interface AccountDelete extends AccountRequestBase {
 
+export interface AccountDelete extends AccountRequestBase {
+    password: string;
 }
 
 export interface ResponseMessageType {
