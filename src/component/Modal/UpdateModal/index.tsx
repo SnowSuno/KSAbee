@@ -3,9 +3,10 @@ import {Account} from "../../../common/api";
 
 interface UpdateModalProps {
   handleShowModal: (input: string) => void;
+  fetchUserAccounts: () => Promise<void>;
 }
 
-const UpdateModal = ({handleShowModal}: UpdateModalProps) => {
+const UpdateModal = ({handleShowModal, fetchUserAccounts}: UpdateModalProps) => {
   const [studentID, setStudentID] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const [changeNickname, setChangeNickname] = useState(false);
@@ -99,6 +100,7 @@ const UpdateModal = ({handleShowModal}: UpdateModalProps) => {
           } catch(error) {
             console.log(error);
           } finally {
+            alert('계정을 업데이트 하였습니다.')
             handleShowModal('null');
           }
         }}

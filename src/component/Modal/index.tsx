@@ -32,6 +32,7 @@ const Modal = ({showModal, handleShowModal, fetchUserAccounts}: ModalProps) => {
             : showModal === 'update'
             ? <UpdateModal
                 handleShowModal={handleShowModal}
+                fetchUserAccounts={fetchUserAccounts}
               />
             : showModal === 'delete'
             ? <DeleteModal handleShowModal={handleShowModal} />
