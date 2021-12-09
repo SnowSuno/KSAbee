@@ -33,11 +33,13 @@ export default function App() {
 
   const fetchUserAccounts = useCallback(async () => {
     try {
+      setShowModal('load');
       const userAccountList = await Account.getAccounts();
       setAccountList(userAccountList);
     } catch (e){
       console.log(e)
     } finally {
+      setShowModal('null');
       setLoading(false);
     }
   }, []);
@@ -50,6 +52,12 @@ export default function App() {
         handleSearchWord={handleSearchWord}
         handleShowModal ={handleShowModal}
       />
+      <button
+        onClick={() => handleShowModal('load')}
+      >
+        로딩
+      </button>
+
       <ProfileTable
         accountList={accountList}
         loading={loading}

@@ -13,8 +13,13 @@ interface ModalProps {
 const Modal = ({showModal, handleShowModal, fetchUserAccounts}: ModalProps) => {
   return (
       <div className={showModal === 'null' ? '' : 'background'}>
+        {showModal === 'load'
+          ? <div className="loader">
+          </div>
+          : ''
+        }
         <div className="modal">
-          {showModal === 'null' ? '' :
+          {showModal === 'load' || 'null' ? '' :
             <div>
               <button onClick={() => handleShowModal('null')}>x</button>
             </div>
