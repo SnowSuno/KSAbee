@@ -35,7 +35,10 @@ const Modal = ({showModal, handleShowModal, fetchUserAccounts}: ModalProps) => {
                 fetchUserAccounts={fetchUserAccounts}
               />
             : showModal === 'delete'
-            ? <DeleteModal handleShowModal={handleShowModal} />
+            ? <DeleteModal
+                handleShowModal={handleShowModal}
+                fetchUserAccounts={fetchUserAccounts}
+              />
             : ''
           }
         </div>
