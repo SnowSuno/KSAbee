@@ -92,15 +92,18 @@ const UpdateModal = ({handleShowModal, fetchUserAccounts}: UpdateModalProps) => 
       <button
         onClick={async () => {
           try {
+            handleShowModal('load')
             await Account.updateAccount(studentID, {
                 password,
                 nickname: changeNickname ? nickname : undefined,
                 position: changePosition ? position : undefined
             });
+            await fetchUserAccounts();
+            alert('계정을 업데이트 하였습니다.')
           } catch(error) {
+            alert('계정 업데이트에 실패하였습니다.')
             console.log(error);
           } finally {
-            alert('계정을 업데이트 하였습니다.')
             handleShowModal('null');
           }
         }}
