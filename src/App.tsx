@@ -63,8 +63,14 @@ export default function App() {
     const positionResult = position === 'all'
       ? gradeResult
       : gradeResult.filter(account => account.position === position);
-    setFilterAccountList(positionResult);
-  }, [accountList, grade, position]);
+
+    const wordResult = positionResult.filter(account => {
+      const data = account.user.name + account.user.sid + account.position + account.level + account.nickname;
+      return data.includes(searchWord);
+    });
+
+    setFilterAccountList(wordResult);
+  }, [accountList, grade, position, searchWord]);
 
 
   const fetchUserAccounts = useCallback(async () => {
