@@ -13,8 +13,13 @@ interface ModalProps {
 const Modal = ({showModal, handleShowModal, fetchUserAccounts}: ModalProps) => {
   return (
       <div className={showModal === 'null' ? '' : 'background'}>
+        {showModal === 'load'
+          ? <div className="loader">
+          </div>
+          : ''
+        }
         <div className="modal">
-          {showModal === 'null' ? '' :
+          {showModal === 'load' || showModal === 'null' ? '' :
             <div>
               <button onClick={() => handleShowModal('null')}>x</button>
             </div>
@@ -27,9 +32,13 @@ const Modal = ({showModal, handleShowModal, fetchUserAccounts}: ModalProps) => {
             : showModal === 'update'
             ? <UpdateModal
                 handleShowModal={handleShowModal}
+                fetchUserAccounts={fetchUserAccounts}
               />
             : showModal === 'delete'
-            ? <DeleteModal handleShowModal={handleShowModal} />
+            ? <DeleteModal
+                handleShowModal={handleShowModal}
+                fetchUserAccounts={fetchUserAccounts}
+              />
             : ''
           }
         </div>

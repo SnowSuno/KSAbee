@@ -3,9 +3,10 @@ import {Account} from "../../../common/api";
 
 interface DeleteModalProps {
   handleShowModal: (input: string) => void;
+  fetchUserAccounts: () => Promise<void>;
 }
 
-const DeleteModal = ({handleShowModal}: DeleteModalProps) => {
+const DeleteModal = ({handleShowModal, fetchUserAccounts}: DeleteModalProps) => {
   const [studentID, setStudentID] = useState<string>('');
   const [password, setPassword] = useState<string>('');
 
@@ -40,8 +41,12 @@ const DeleteModal = ({handleShowModal}: DeleteModalProps) => {
       <button
         onClick={async () => {
           try {
+            handleShowModal('load');
             await Account.deleteAccount(studentID, {password});
+            await fetchUserAccounts();
+            alert('게정을 삭제하였습니다.')
           } catch(error) {
+            alert('계정삭제에 실패해였습니다.')
             console.log(error);
           } finally {
             handleShowModal('null');

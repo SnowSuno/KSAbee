@@ -1,4 +1,4 @@
-import React, {useCallback, useState} from "react";
+import React, {useCallback, useState, useEffect} from "react";
 
 import Header from "./component/Header";
 import Toolbar from "./component/Toolbar";
@@ -11,15 +11,21 @@ import {Account} from "./common/api";
 export default function App() {
   const [loading, setLoading] = useState<boolean>(true);
   const [accountList, setAccountList] = useState<AccountType[]>([]);
-  const [grade, setGrade] = useState<number>(19);
-  const [searchWord, setSearchWord] = useState<string>('');
+  const [filterAccountList, setFilterAccountList] = useState<AccountType[]>([]);
   const [showModal, setShowModal] = useState<string>('null');
-  
-  console.log(grade, searchWord, showModal);
+  const [sort, setSort] = useState('tier');
+  const [grade, setGrade] = useState<string>('all');
+  const [position, setPosition] = useState<string>('all');
+  const [searchWord, setSearchWord] = useState<string>('');
+
+  console.log(sort, grade, position, searchWord);
 
   const handleGrade = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    const value = parseInt(event.target.value);
-    setGrade(value);
+    setGrade(event.target.value);
+  }
+
+  const handlePosition = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    setPosition(event.target.value);
   }
 
   const handleSearchWord = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -31,13 +37,46 @@ export default function App() {
     setShowModal(modalName);
   }
 
+  const handleSort = (sortStandard: string) => {
+    setSort(sortStandard);
+  }
+
+  const addWinRate = (account: AccountType) => {
+    const matches = account.wins + account.losses;
+    const winRate =
+      matches === 0
+        ? '0'
+        : (100*account.wins/(account.wins+account.losses)).toFixed(1);
+
+    return {
+      ...account,
+      'winRate': winRate
+    }
+  }
+
+  useEffect(() => {
+    console.log(accountList)
+    const gradeResult = grade === 'all'
+      ? accountList
+      : accountList.filter(account => account.user.sid.slice(0, 2) === grade);
+
+    const positionResult = position === 'all'
+      ? gradeResult
+      : gradeResult.filter(account => account.position === position);
+    setFilterAccountList(positionResult);
+  }, [accountList, grade, position]);
+
+
   const fetchUserAccounts = useCallback(async () => {
     try {
-      const userAccountList = await Account.getAccounts();
-      setAccountList(userAccountList);
+      setShowModal('load');
+      const accountList = await Account.getAccounts();
+      const modifyAccountList = accountList.map((account) => addWinRate(account))
+      setAccountList(modifyAccountList);
     } catch (e){
       console.log(e)
     } finally {
+      setShowModal('null');
       setLoading(false);
     }
   }, []);
@@ -47,13 +86,16 @@ export default function App() {
       <Header />
       <Toolbar 
         handleGrade={handleGrade}
+        handlePosition={handlePosition}
         handleSearchWord={handleSearchWord}
         handleShowModal ={handleShowModal}
       />
       <ProfileTable
-        accountList={accountList}
+        accountList={filterAccountList}
         loading={loading}
         fetchUserAccounts={fetchUserAccounts}
+        sort={sort}
+        handleSort={handleSort}
       />
       <Footer />
       <Modal

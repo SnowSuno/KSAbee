@@ -68,13 +68,14 @@ const RegisterModal = ({handleShowModal, fetchUserAccounts}: RegisterModalProps)
       <button
         onClick={async () => {
           try {
+            handleShowModal('load');
             await Account.createAccount(studentID, {password, nickname, position});
             await fetchUserAccounts();
+            alert('계정을 추가하였습니다.')
           } catch(error) {
             console.log(error);
             alert('계정추가에 실패하였습니다.')
           } finally {
-            alert('계정을 추가하였습니다.')
             handleShowModal('null');
           }
         }}

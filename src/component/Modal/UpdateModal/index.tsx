@@ -3,9 +3,10 @@ import {Account} from "../../../common/api";
 
 interface UpdateModalProps {
   handleShowModal: (input: string) => void;
+  fetchUserAccounts: () => Promise<void>;
 }
 
-const UpdateModal = ({handleShowModal}: UpdateModalProps) => {
+const UpdateModal = ({handleShowModal, fetchUserAccounts}: UpdateModalProps) => {
   const [studentID, setStudentID] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const [changeNickname, setChangeNickname] = useState(false);
@@ -91,12 +92,16 @@ const UpdateModal = ({handleShowModal}: UpdateModalProps) => {
       <button
         onClick={async () => {
           try {
+            handleShowModal('load')
             await Account.updateAccount(studentID, {
                 password,
                 nickname: changeNickname ? nickname : undefined,
                 position: changePosition ? position : undefined
             });
+            await fetchUserAccounts();
+            alert('계정을 업데이트 하였습니다.')
           } catch(error) {
+            alert('계정 업데이트에 실패하였습니다.')
             console.log(error);
           } finally {
             handleShowModal('null');

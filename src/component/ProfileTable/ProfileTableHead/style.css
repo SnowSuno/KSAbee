@@ -1,0 +1,16 @@
+th div img {
+    width: 20px;
+}
+
+th div button {
+    display: inline-block;
+    width: auto;
+    padding: 0;
+    border: 1px solid #332100;
+    border-radius: 6px;
+    background-color: #fff;
+}
+
+th div button:hover {
+    background-color: #aaaaaa;
+}
