@@ -13,14 +13,17 @@ export default function App() {
   const [accountList, setAccountList] = useState<AccountType[]>([]);
   const [showModal, setShowModal] = useState<string>('null');
   const [sort, setSort] = useState('tier');
-  const [grade, setGrade] = useState<number>(19);
+  const [grade, setGrade] = useState<string>('all');
   const [searchWord, setSearchWord] = useState<string>('');
 
   console.log(sort, grade, searchWord, showModal);
 
   const handleGrade = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    const value = parseInt(event.target.value);
-    setGrade(value);
+    setGrade(event.target.value);
+  }
+
+  const handlePosition = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    setGrade(event.target.value);
   }
 
   const handleSearchWord = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -54,6 +57,7 @@ export default function App() {
       <Header />
       <Toolbar 
         handleGrade={handleGrade}
+        handlePosition={handlePosition}
         handleSearchWord={handleSearchWord}
         handleShowModal ={handleShowModal}
       />
