@@ -10,16 +10,10 @@ interface ProfileTableProps {
   accountList: AccountType[];
   loading: boolean;
   fetchUserAccounts: () => Promise<void>
+  sort: string;
+  handleSort: (input: string) => void;
 }
-function ProfileTable({accountList, loading, fetchUserAccounts}: ProfileTableProps) {
-  console.log(loading, accountList);
-  // const [sort, setSort] = useState({
-  //     key: 'tier',
-  //     reverse: false,
-  // });
-
-
-
+function ProfileTable({accountList, loading, fetchUserAccounts, sort, handleSort}: ProfileTableProps) {
   useEffect(() => {
     fetchUserAccounts();
   }, [fetchUserAccounts])
@@ -27,7 +21,10 @@ function ProfileTable({accountList, loading, fetchUserAccounts}: ProfileTablePro
   return (
     <table className="profileTable">
       <thead>
-        <ProfileTableHead />
+        <ProfileTableHead
+          sort={sort}
+          handleSort={handleSort}
+        />
       </thead>
       <tbody>
         {accountList !== undefined &&

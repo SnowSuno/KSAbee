@@ -11,11 +11,12 @@ import {Account} from "./common/api";
 export default function App() {
   const [loading, setLoading] = useState<boolean>(true);
   const [accountList, setAccountList] = useState<AccountType[]>([]);
+  const [showModal, setShowModal] = useState<string>('null');
+  const [sort, setSort] = useState('tier');
   const [grade, setGrade] = useState<number>(19);
   const [searchWord, setSearchWord] = useState<string>('');
-  const [showModal, setShowModal] = useState<string>('null');
-  
-  console.log(grade, searchWord, showModal);
+
+  console.log(sort, grade, searchWord, showModal);
 
   const handleGrade = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const value = parseInt(event.target.value);
@@ -29,6 +30,10 @@ export default function App() {
 
   const handleShowModal = (modalName: string) => {
     setShowModal(modalName);
+  }
+
+  const handleSort = (sortStandard: string) => {
+    setSort(sortStandard);
   }
 
   const fetchUserAccounts = useCallback(async () => {
@@ -52,16 +57,12 @@ export default function App() {
         handleSearchWord={handleSearchWord}
         handleShowModal ={handleShowModal}
       />
-      <button
-        onClick={() => handleShowModal('load')}
-      >
-        로딩
-      </button>
-
       <ProfileTable
         accountList={accountList}
         loading={loading}
         fetchUserAccounts={fetchUserAccounts}
+        sort={sort}
+        handleSort={handleSort}
       />
       <Footer />
       <Modal
