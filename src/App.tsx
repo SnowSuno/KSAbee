@@ -1,4 +1,4 @@
-import React, {useCallback, useState} from "react";
+import React, {useCallback, useState, useEffect} from "react";
 
 import Header from "./component/Header";
 import Toolbar from "./component/Toolbar";
@@ -11,6 +11,7 @@ import {Account} from "./common/api";
 export default function App() {
   const [loading, setLoading] = useState<boolean>(true);
   const [accountList, setAccountList] = useState<AccountType[]>([]);
+  const [filterAccountList, setFilterAccountList] = useState<AccountType[]>([]);
   const [showModal, setShowModal] = useState<string>('null');
   const [sort, setSort] = useState('tier');
   const [grade, setGrade] = useState<string>('all');
@@ -39,6 +40,18 @@ export default function App() {
     setSort(sortStandard);
   }
 
+  useEffect(() => {
+    const result = grade === 'all'
+      ? accountList
+      : accountList.filter(account => {
+        console.log(typeof(grade));
+        return account.user.sid.slice(0, 2) === grade
+      });
+    setFilterAccountList(result);
+    console.log(result);
+  }, [accountList, grade]);
+
+
   const fetchUserAccounts = useCallback(async () => {
     try {
       setShowModal('load');
@@ -54,7 +67,6 @@ export default function App() {
           'winRate': winRate
         }
       })
-      console.log(modifyAccountList);
       setAccountList(modifyAccountList);
     } catch (e){
       console.log(e)
@@ -74,7 +86,7 @@ export default function App() {
         handleShowModal ={handleShowModal}
       />
       <ProfileTable
-        accountList={accountList}
+        accountList={filterAccountList}
         loading={loading}
         fetchUserAccounts={fetchUserAccounts}
         sort={sort}
