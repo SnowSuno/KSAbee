@@ -45,8 +45,10 @@ export default function App() {
       const accountList = await Account.getAccounts();
       const modifyAccountList = accountList.map((account) => {
         const matches = account.wins + account.losses;
-        const winRate = matches === 0 ? 0
-          : (100*account.wins/(account.wins+account.losses)).toFixed(1);
+        const winRate =
+          matches === 0
+            ? '0'
+            : (100*account.wins/(account.wins+account.losses)).toFixed(1);
         return {
           ...account,
           'winRate': winRate
