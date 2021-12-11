@@ -16,6 +16,7 @@ export interface AccountType {
     league_points: number;
     wins: number;
     losses: number;
+    winRate: number;
 }
 
 export interface AccountStateType {

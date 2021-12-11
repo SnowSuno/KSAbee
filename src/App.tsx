@@ -42,8 +42,18 @@ export default function App() {
   const fetchUserAccounts = useCallback(async () => {
     try {
       setShowModal('load');
-      const userAccountList = await Account.getAccounts();
-      setAccountList(userAccountList);
+      const accountList = await Account.getAccounts();
+      const modifyAccountList = accountList.map((account) => {
+        const matches = account.wins + account.losses;
+        const winRate = matches === 0 ? 0
+          : (100*account.wins/(account.wins+account.losses)).toFixed(1);
+        return {
+          ...account,
+          'winRate': winRate
+        }
+      })
+      console.log(modifyAccountList);
+      setAccountList(modifyAccountList);
     } catch (e){
       console.log(e)
     } finally {

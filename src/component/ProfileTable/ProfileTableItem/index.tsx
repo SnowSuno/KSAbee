@@ -15,10 +15,6 @@ type ProfileTableItemProps = {
 }
 
 const ProfileTableItem: React.FC<ProfileTableItemProps> = ({account, index}) => {
-  const matches = account.wins + account.losses;
-  const winRate = matches === 0 ? 0 
-    : (100*account.wins/(account.wins+account.losses)).toFixed(1);
-
   return (
     <tr className="profileItem">
       <td className="rank">
@@ -39,7 +35,7 @@ const ProfileTableItem: React.FC<ProfileTableItemProps> = ({account, index}) => 
         Lv. {account.level}
       </td>
       <td className="gameInfo">
-        <p className="winRate">{winRate}%</p>
+        <p className="winRate">{account.winRate}%</p>
         <p className="matches">{account.wins}/{account.losses}</p>
       </td>
       <td className="position">
