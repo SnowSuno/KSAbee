@@ -15,16 +15,17 @@ export default function App() {
   const [showModal, setShowModal] = useState<string>('null');
   const [sort, setSort] = useState('tier');
   const [grade, setGrade] = useState<string>('all');
+  const [position, setPosition] = useState<string>('all');
   const [searchWord, setSearchWord] = useState<string>('');
 
-  console.log(sort, grade, searchWord, showModal);
+  console.log(sort, grade, position, searchWord);
 
   const handleGrade = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setGrade(event.target.value);
   }
 
   const handlePosition = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    setGrade(event.target.value);
+    setPosition(event.target.value);
   }
 
   const handleSearchWord = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -40,33 +41,37 @@ export default function App() {
     setSort(sortStandard);
   }
 
+  const addWinRate = (account: AccountType) => {
+    const matches = account.wins + account.losses;
+    const winRate =
+      matches === 0
+        ? '0'
+        : (100*account.wins/(account.wins+account.losses)).toFixed(1);
+
+    return {
+      ...account,
+      'winRate': winRate
+    }
+  }
+
   useEffect(() => {
-    const result = grade === 'all'
+    console.log(accountList)
+    const gradeResult = grade === 'all'
       ? accountList
-      : accountList.filter(account => {
-        console.log(typeof(grade));
-        return account.user.sid.slice(0, 2) === grade
-      });
-    setFilterAccountList(result);
-    console.log(result);
-  }, [accountList, grade]);
+      : accountList.filter(account => account.user.sid.slice(0, 2) === grade);
+
+    const positionResult = position === 'all'
+      ? gradeResult
+      : gradeResult.filter(account => account.position === position);
+    setFilterAccountList(positionResult);
+  }, [accountList, grade, position]);
 
 
   const fetchUserAccounts = useCallback(async () => {
     try {
       setShowModal('load');
       const accountList = await Account.getAccounts();
-      const modifyAccountList = accountList.map((account) => {
-        const matches = account.wins + account.losses;
-        const winRate =
-          matches === 0
-            ? '0'
-            : (100*account.wins/(account.wins+account.losses)).toFixed(1);
-        return {
-          ...account,
-          'winRate': winRate
-        }
-      })
+      const modifyAccountList = accountList.map((account) => addWinRate(account))
       setAccountList(modifyAccountList);
     } catch (e){
       console.log(e)
