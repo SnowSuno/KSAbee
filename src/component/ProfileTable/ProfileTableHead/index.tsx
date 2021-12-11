@@ -1,5 +1,6 @@
 import React from "react";
 
+import './style.css'
 import upImg from "../../../img/icons/up.png"
 import downImg from "../../../img/icons/down.png"
 
@@ -21,19 +22,16 @@ const ProfileTableHead = ({sort, handleSort}: ProfileTableHeadProps) => {
       <th className="head__tier">
         <span>티어</span>
         <div>
-          {sort === 'tier' ?
-            <button
-              onClick={() => handleSort('tier_reverse')}
-            >
-              <img src={upImg} alt="오름차순 정렬"/>
-            </button>
-          :
-            <button
-              onClick={() => handleSort('tier')}
-            >
-              <img src={downImg} alt="내림차순 정렬"/>
-            </button>
-          }
+          <button
+            onClick={() => handleSort('tier_reverse')}
+          >
+            <img src={upImg} alt="오름차순 정렬"/>
+          </button>
+          <button
+            onClick={() => handleSort('tier')}
+          >
+            <img src={downImg} alt="내림차순 정렬"/>
+          </button>
         </div>
       </th>
       <th className="head__level">
@@ -55,7 +53,22 @@ const ProfileTableHead = ({sort, handleSort}: ProfileTableHeadProps) => {
         </div>
       </th>
       <th>
-        승률
+        <span>승률</span>
+        <div>
+          {sort === 'winRate' ?
+            <button
+              onClick={() => handleSort('winRate_reverse')}
+            >
+              <img src={upImg} alt="오름차순 정렬"/>
+            </button>
+            :
+            <button
+              onClick={() => handleSort('winRate')}
+            >
+              <img src={downImg} alt="내림차순 정렬"/>
+            </button>
+          }
+        </div>
       </th>
       <th>
         포지션
