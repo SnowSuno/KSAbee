@@ -19,7 +19,7 @@ const Modal = ({showModal, handleShowModal, fetchUserAccounts}: ModalProps) => {
           : ''
         }
         <div className="modal">
-          {showModal === 'load' || 'null' ? '' :
+          {showModal === 'load' || showModal === 'null' ? '' :
             <div>
               <button onClick={() => handleShowModal('null')}>x</button>
             </div>
