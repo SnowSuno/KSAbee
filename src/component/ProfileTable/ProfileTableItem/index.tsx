@@ -35,7 +35,7 @@ const ProfileTableItem: React.FC<ProfileTableItemProps> = ({account, index}) => 
         Lv. {account.level}
       </td>
       <td className="gameInfo">
-        <p className="winRate">{account.winRate}%</p>
+        <p className="winRate">{account.win_rate}%</p>
         <p className="matches">{account.wins}/{account.losses}</p>
       </td>
       <td className="position">

@@ -6,6 +6,7 @@ export interface UserType {
 }
 
 export interface AccountType {
+    index: number;
     user: UserType;
     nickname: string;
     summoner_id: number;
@@ -16,7 +17,8 @@ export interface AccountType {
     league_points: number;
     wins: number;
     losses: number;
-    winRate: string;
+    win_rate: number;
+    lp_key: number;
 }
 
 export interface AccountStateType {
