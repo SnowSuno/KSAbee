@@ -6,6 +6,7 @@
   margin: 0 0 20px 0;
   height: 80px;
   background-color: bisque;
+  box-shadow: rgba(17, 12, 46, 0.15) 0px 12px 20px 0px
 }
 
 .header__img {

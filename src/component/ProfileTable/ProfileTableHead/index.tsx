@@ -11,16 +11,16 @@ interface ProfileTableHeadProps {
 
 const ProfileTableHead = ({sort, handleSort}: ProfileTableHeadProps) => {
   return (
-    <tr>
-      <th className="head__rank">
+    <div className="profileHead">
+      <div className="head__rank">
         순위
-      </th>
-      <th className="head__profile">
+      </div>
+      <div className="head__profile">
         프로필
-      </th>
-      <th className="head__user">
-      </th>
-      <th className="head__tier">
+      </div>
+      <div className="head__user">
+      </div>
+      <div className="head__tier">
         <span>티어</span>
         <div>
           <button
@@ -36,8 +36,8 @@ const ProfileTableHead = ({sort, handleSort}: ProfileTableHeadProps) => {
             <img src={downImg} alt="내림차순 정렬"/>
           </button>
         </div>
-      </th>
-      <th className="head__level">
+      </div>
+      <div className="head__level">
         <span>레벨</span>
         <div>
           <button
@@ -53,8 +53,8 @@ const ProfileTableHead = ({sort, handleSort}: ProfileTableHeadProps) => {
             <img src={downImg} alt="내림차순 정렬"/>
           </button>
         </div>
-      </th>
-      <th className="head__gameInfo">
+      </div>
+      <div className="head__gameInfo">
         <span>승률</span>
         <div>
           <button
@@ -70,11 +70,11 @@ const ProfileTableHead = ({sort, handleSort}: ProfileTableHeadProps) => {
             <img src={downImg} alt="내림차순 정렬"/>
           </button>
         </div>
-      </th>
-      <th className="head__position">
+      </div>
+      <div className="head__position">
         포지션
-      </th>
-    </tr>
+      </div>
+    </div>
   )
 }
 

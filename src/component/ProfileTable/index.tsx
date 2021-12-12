@@ -19,14 +19,12 @@ function ProfileTable({accountList, loading, fetchUserAccounts, sort, handleSort
   }, [fetchUserAccounts])
 
   return (
-    <table className="profileTable">
-      <thead>
-        <ProfileTableHead
-          sort={sort}
-          handleSort={handleSort}
-        />
-      </thead>
-      <tbody>
+    <div className="profileTable">
+      <ProfileTableHead
+        sort={sort}
+        handleSort={handleSort}
+      />
+      <div>
         {accountList !== undefined &&
         accountList.map(
           (data: AccountType) =>
@@ -35,8 +33,8 @@ function ProfileTable({accountList, loading, fetchUserAccounts, sort, handleSort
               key={data.summoner_id}
             />
         )}
-      </tbody>
-    </table>
+      </div>
+    </div>
   );
 }
 

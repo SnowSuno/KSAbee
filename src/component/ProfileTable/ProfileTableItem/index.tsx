@@ -15,30 +15,30 @@ type ProfileTableItemProps = {
 
 const ProfileTableItem: React.FC<ProfileTableItemProps> = ({account}) => {
   return (
-    <tr className="profileItem">
-      <td className="rank">
+    <div className="profileItem">
+      <div className="rank">
         {account.index}
-      </td>
-      <td className="profile">
+      </div>
+      <div className="profile">
         <img className="profile__img" src={account.profile_image} alt="profile img" />
-      </td>
-      <td className="user">
+      </div>
+      <div className="user">
         <p className="user__nick">{account.nickname}</p>
         <p className="user__name">{account.user.sid} {account.user.name}</p>
-      </td>
-      <td className="tier">
+      </div>
+      <div className="tier">
         <p className="tier__rank">{account.tier}</p>
         <p className="tier__lp">{account.league_points}LP</p>
-      </td>
-      <td className="level">
+      </div>
+      <div className="level">
         <span>Lv. </span>
         <span>{account.level}</span>
-      </td>
-      <td className="gameInfo">
+      </div>
+      <div className="gameInfo">
         <p className="winRate">{account.win_rate}%</p>
         <p className="matches">{account.wins}/{account.losses}</p>
-      </td>
-      <td className="position">
+      </div>
+      <div className="position">
         {
           account.position === 'top' ? <img src={top} alt="top img" />
           : account.position === 'jg' ? <img src={jg} alt="jg img" />
@@ -46,8 +46,8 @@ const ProfileTableItem: React.FC<ProfileTableItemProps> = ({account}) => {
           : account.position === 'bot' ? <img src={bot} alt="bot img" />
           : <img src={sup} alt="sup img" />
         }
-      </td>
-    </tr>
+      </div>
+    </div>
   )
 }
 
