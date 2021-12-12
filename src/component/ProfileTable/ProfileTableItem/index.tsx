@@ -10,15 +10,14 @@ import sup from "../../../img/position/sup.png";
 
 type ProfileTableItemProps = {
   account: AccountType;
-  index: number;
   key: number;
 }
 
-const ProfileTableItem: React.FC<ProfileTableItemProps> = ({account, index}) => {
+const ProfileTableItem: React.FC<ProfileTableItemProps> = ({account}) => {
   return (
     <tr className="profileItem">
       <td className="rank">
-        {index}
+        {account.index}
       </td>
       <td className="profile">
         <img className="profile__img" src={account.profile_image} alt="profile img" />

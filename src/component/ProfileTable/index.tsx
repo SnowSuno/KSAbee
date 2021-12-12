@@ -29,10 +29,9 @@ function ProfileTable({accountList, loading, fetchUserAccounts, sort, handleSort
       <tbody>
         {accountList !== undefined &&
         accountList.map(
-          (data, index) =>
+          (data: AccountType) =>
             <ProfileTableItem
               account={data}
-              index={index+1}
               key={data.summoner_id}
             />
 

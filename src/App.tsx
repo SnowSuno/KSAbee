@@ -69,9 +69,16 @@ export default function App() {
       })
     }
 
+    const indexAccountList = accountList.map((account: AccountType, index: number) => {
+      return {
+        ...account,
+        'index': index+1
+      }
+    })
+
     const gradeResult = grade === 'all'
-      ? accountList
-      : accountList.filter(account => account.user.sid.slice(0, 2) === grade);
+      ? indexAccountList
+      : indexAccountList.filter(account => account.user.sid.slice(0, 2) === grade);
 
     const positionResult = position === 'all'
       ? gradeResult
