@@ -14,3 +14,7 @@ th div button {
 th div button:hover {
     background-color: #aaaaaa;
 }
+
+th div .active {
+    background-color: #C8AA6E;
+}
