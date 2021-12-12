@@ -34,7 +34,6 @@ function ProfileTable({accountList, loading, fetchUserAccounts, sort, handleSort
               account={data}
               key={data.summoner_id}
             />
-
         )}
       </tbody>
     </table>

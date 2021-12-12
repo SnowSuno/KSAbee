@@ -23,15 +23,16 @@ const ProfileTableItem: React.FC<ProfileTableItemProps> = ({account}) => {
         <img className="profile__img" src={account.profile_image} alt="profile img" />
       </td>
       <td className="user">
-        <p>{account.nickname}</p>
-        <p>{account.user.sid} {account.user.name}</p>
+        <p className="user__nick">{account.nickname}</p>
+        <p className="user__name">{account.user.sid} {account.user.name}</p>
       </td>
       <td className="tier">
-        <p>{account.tier}</p>
-        <p>{account.league_points}LP</p>
+        <p className="tier__rank">{account.tier}</p>
+        <p className="tier__lp">{account.league_points}LP</p>
       </td>
       <td className="level">
-        Lv. {account.level}
+        <span>Lv. </span>
+        <span>{account.level}</span>
       </td>
       <td className="gameInfo">
         <p className="winRate">{account.win_rate}%</p>
