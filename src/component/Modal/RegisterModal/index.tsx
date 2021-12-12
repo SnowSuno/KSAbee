@@ -1,6 +1,8 @@
 import React, {useState} from 'react'
 import {Account} from "../../../common/api";
 import "../style.css"
+import axios from "axios";
+import {AxiosError} from "axios";
 
 interface RegisterModalProps {
   handleShowModal: (input: string) => void;
@@ -73,9 +75,7 @@ const RegisterModal = ({handleShowModal, fetchUserAccounts}: RegisterModalProps)
             await fetchUserAccounts();
             alert('계정을 추가하였습니다.')
           } catch(error) {
-            // console.log(error.response.status);
             console.log(error);
-            alert('계정추가에 실패하였습니다.')
           } finally {
             handleShowModal('null');
           }

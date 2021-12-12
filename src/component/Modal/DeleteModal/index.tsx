@@ -46,7 +46,6 @@ const DeleteModal = ({handleShowModal, fetchUserAccounts}: DeleteModalProps) => 
             await fetchUserAccounts();
             alert('게정을 삭제하였습니다.')
           } catch(error) {
-            alert('계정삭제에 실패해였습니다.')
             console.log(error);
           } finally {
             handleShowModal('null');

@@ -69,8 +69,6 @@ export default function App() {
       })
     }
 
-
-
     const gradeResult = grade === 'all'
       ? accountList
       : accountList.filter(account => account.user.sid.slice(0, 2) === grade);
