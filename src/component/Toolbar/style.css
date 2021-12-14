@@ -1,6 +1,6 @@
 .toolBar {
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     width: 768px;
     margin: 0 auto;
 }
