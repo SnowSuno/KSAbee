@@ -1,8 +1,22 @@
-th div img {
-    width: 20px;
+.profileHead {
+    width: 800px;
+    display: flex;
+    flex-direction: row;
+    margin: 10px auto 10px auto;
+    height: 40px;
 }
 
-th div button {
+.profileHead div {
+    display: flex;
+    align-self: center;
+    justify-content: center;
+}
+
+div img {
+    width: 14px;
+}
+
+div button {
     display: inline-block;
     width: auto;
     padding: 0;
@@ -11,6 +25,36 @@ th div button {
     background-color: #fff;
 }
 
-th div button:hover {
+div button:hover {
     background-color: #aaaaaa;
+}
+
+div .active {
+    background-color: #C8AA6E;
+}
+
+.head__rank {
+    width: 40px;
+    margin-right: 10px;
+}
+
+.head__profile {
+    width: 80px;
+}
+
+.head__user {
+    width: 160px;
+    padding-left: 20px;
+}
+
+.head__tier {
+    width: 100px;
+}
+
+.head__level {
+    width: 80px;
+}
+
+.head__gameInfo {
+    width: 80px;
 }

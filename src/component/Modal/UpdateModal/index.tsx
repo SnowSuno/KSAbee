@@ -101,7 +101,6 @@ const UpdateModal = ({handleShowModal, fetchUserAccounts}: UpdateModalProps) => 
             await fetchUserAccounts();
             alert('계정을 업데이트 하였습니다.')
           } catch(error) {
-            alert('계정 업데이트에 실패하였습니다.')
             console.log(error);
           } finally {
             handleShowModal('null');

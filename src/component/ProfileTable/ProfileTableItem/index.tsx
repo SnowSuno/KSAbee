@@ -10,35 +10,35 @@ import sup from "../../../img/position/sup.png";
 
 type ProfileTableItemProps = {
   account: AccountType;
-  index: number;
   key: number;
 }
 
-const ProfileTableItem: React.FC<ProfileTableItemProps> = ({account, index}) => {
+const ProfileTableItem: React.FC<ProfileTableItemProps> = ({account}) => {
   return (
-    <tr className="profileItem">
-      <td className="rank">
-        {index}
-      </td>
-      <td className="profile">
+    <div className="profileItem">
+      <div className="rank">
+        {account.index}
+      </div>
+      <div className="profile">
         <img className="profile__img" src={account.profile_image} alt="profile img" />
-      </td>
-      <td className="user">
-        <p>{account.nickname}</p>
-        <p>{account.user.sid} {account.user.name}</p>
-      </td>
-      <td className="tier">
-        <p>{account.tier}</p>
-        <p>{account.league_points}LP</p>
-      </td>
-      <td className="level">
-        Lv. {account.level}
-      </td>
-      <td className="gameInfo">
-        <p className="winRate">{account.winRate}%</p>
+      </div>
+      <div className="user">
+        <p className="user__nick">{account.nickname}</p>
+        <p className="user__name">{account.user.sid} {account.user.name}</p>
+      </div>
+      <div className="tier">
+        <p className="tier__rank">{account.tier}</p>
+        <p className="tier__lp">{account.league_points}LP</p>
+      </div>
+      <div className="level">
+        <span>Lv. </span>
+        <span>{account.level}</span>
+      </div>
+      <div className="gameInfo">
+        <p className="winRate">{account.win_rate}%</p>
         <p className="matches">{account.wins}/{account.losses}</p>
-      </td>
-      <td className="position">
+      </div>
+      <div className="position">
         {
           account.position === 'top' ? <img src={top} alt="top img" />
           : account.position === 'jg' ? <img src={jg} alt="jg img" />
@@ -46,8 +46,8 @@ const ProfileTableItem: React.FC<ProfileTableItemProps> = ({account, index}) => 
           : account.position === 'bot' ? <img src={bot} alt="bot img" />
           : <img src={sup} alt="sup img" />
         }
-      </td>
-    </tr>
+      </div>
+    </div>
   )
 }
 

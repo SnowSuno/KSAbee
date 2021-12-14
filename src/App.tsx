@@ -19,6 +19,7 @@ export default function App() {
   const [searchWord, setSearchWord] = useState<string>('');
 
   console.log(sort, grade, position, searchWord);
+  console.log(accountList);
 
   const handleGrade = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setGrade(event.target.value);
@@ -41,38 +42,62 @@ export default function App() {
     setSort(sortStandard);
   }
 
-  const addWinRate = (account: AccountType) => {
-    const matches = account.wins + account.losses;
-    const winRate =
-      matches === 0
-        ? '0'
-        : (100*account.wins/(account.wins+account.losses)).toFixed(1);
-
-    return {
-      ...account,
-      'winRate': winRate
-    }
-  }
-
   useEffect(() => {
-    console.log(accountList)
+    if (sort === 'tier') {
+      accountList.sort(function (a: AccountType, b: AccountType) {
+        return b.lp_key - a.lp_key;
+      })
+    } else if (sort === 'tier_reverse') {
+      accountList.sort(function (a: AccountType, b: AccountType) {
+        return a.lp_key - b.lp_key;
+      })
+    } else if (sort === 'level') {
+      accountList.sort(function (a: AccountType, b: AccountType) {
+        return b.level - a.level;
+      })
+    } else if (sort === 'level_reverse') {
+      accountList.sort(function (a:AccountType, b: AccountType) {
+        return a.level - b.level;
+      })
+    } else if (sort === 'winRate') {
+      accountList.sort(function (a: AccountType, b: AccountType) {
+        return b.win_rate - a.win_rate;
+      })
+    } else if (sort === 'winRate_reverse') {
+      accountList.sort(function (a: AccountType, b: AccountType) {
+        return a.win_rate - b.win_rate;
+      })
+    }
+
+    const indexAccountList = accountList.map((account: AccountType, index: number) => {
+      return {
+        ...account,
+        'index': index+1
+      }
+    })
+
     const gradeResult = grade === 'all'
-      ? accountList
-      : accountList.filter(account => account.user.sid.slice(0, 2) === grade);
+      ? indexAccountList
+      : indexAccountList.filter(account => account.user.sid.slice(0, 2) === grade);
 
     const positionResult = position === 'all'
       ? gradeResult
       : gradeResult.filter(account => account.position === position);
-    setFilterAccountList(positionResult);
-  }, [accountList, grade, position]);
+
+    const wordResult = positionResult.filter(account => {
+      const data = account.user.name + account.user.sid + account.position + account.level + account.nickname;
+      return data.includes(searchWord);
+    });
+
+    setFilterAccountList(wordResult);
+  }, [accountList, sort, grade, position, searchWord]);
 
 
   const fetchUserAccounts = useCallback(async () => {
     try {
       setShowModal('load');
       const accountList = await Account.getAccounts();
-      const modifyAccountList = accountList.map((account) => addWinRate(account))
-      setAccountList(modifyAccountList);
+      setAccountList(accountList);
     } catch (e){
       console.log(e)
     } finally {

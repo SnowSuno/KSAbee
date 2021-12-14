@@ -11,69 +11,70 @@ interface ProfileTableHeadProps {
 
 const ProfileTableHead = ({sort, handleSort}: ProfileTableHeadProps) => {
   return (
-    <tr>
-      <th>
+    <div className="profileHead">
+      <div className="head__rank">
         순위
-      </th>
-      <th>
+      </div>
+      <div className="head__profile">
         프로필
-      </th>
-      <th></th>
-      <th className="head__tier">
+      </div>
+      <div className="head__user">
+      </div>
+      <div className="head__tier">
         <span>티어</span>
         <div>
           <button
-            onClick={() => handleSort('tier_reverse')}
+            onClick={() => handleSort('tier')}
+            className={sort==='tier' ? 'active' : ''}
           >
             <img src={upImg} alt="오름차순 정렬"/>
           </button>
           <button
-            onClick={() => handleSort('tier')}
+            onClick={() => handleSort('tier_reverse')}
+            className={sort==='tier_reverse' ? 'active' : ''}
           >
             <img src={downImg} alt="내림차순 정렬"/>
           </button>
         </div>
-      </th>
-      <th className="head__level">
+      </div>
+      <div className="head__level">
         <span>레벨</span>
         <div>
-          {sort === 'level' ?
-            <button
-              onClick={() => handleSort('level_reverse')}
-            >
-              <img src={upImg} alt="오름차순 정렬"/>
-            </button>
-            :
-            <button
-              onClick={() => handleSort('level')}
-            >
-              <img src={downImg} alt="내림차순 정렬"/>
-            </button>
-          }
+          <button
+            onClick={() => handleSort('level')}
+            className={sort==='level' ? 'active' : ''}
+          >
+            <img src={upImg} alt="오름차순 정렬"/>
+          </button>
+          <button
+            onClick={() => handleSort('level_reverse')}
+            className={sort==='level_reverse' ? 'active' : ''}
+          >
+            <img src={downImg} alt="내림차순 정렬"/>
+          </button>
         </div>
-      </th>
-      <th>
+      </div>
+      <div className="head__gameInfo">
         <span>승률</span>
         <div>
-          {sort === 'winRate' ?
-            <button
-              onClick={() => handleSort('winRate_reverse')}
-            >
-              <img src={upImg} alt="오름차순 정렬"/>
-            </button>
-            :
-            <button
-              onClick={() => handleSort('winRate')}
-            >
-              <img src={downImg} alt="내림차순 정렬"/>
-            </button>
-          }
+          <button
+            onClick={() => handleSort('winRate')}
+            className={sort==='winRate' ? 'active' : ''}
+          >
+            <img src={upImg} alt="오름차순 정렬"/>
+          </button>
+          <button
+            onClick={() => handleSort('winRate_reverse')}
+            className={sort==='winRate_reverse' ? 'active' : ''}
+          >
+            <img src={downImg} alt="내림차순 정렬"/>
+          </button>
         </div>
-      </th>
-      <th>
+      </div>
+      <div className="head__position">
         포지션
-      </th>
-    </tr>
+      </div>
+    </div>
   )
 }
 
