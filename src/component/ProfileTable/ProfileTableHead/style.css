@@ -1,7 +1,8 @@
 .profileHead {
-    width: 800px;
+    width: 768px;
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
     margin: 10px auto 10px auto;
     height: 40px;
 }
@@ -57,4 +58,10 @@ div .active {
 
 .head__gameInfo {
     width: 80px;
+}
+
+@media screen and (max-width: 768px) {
+    .profileHead {
+        width: 100%;
+    }
 }

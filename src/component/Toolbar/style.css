@@ -1,4 +1,12 @@
 .toolBar {
     display: flex;
     justify-content: flex-end;
+    width: 768px;
+    margin: 0 auto;
+}
+
+@media screen and (max-width: 768px) {
+    .toolBar {
+        width: 100%;
+    }
 }
