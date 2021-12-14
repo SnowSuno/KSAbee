@@ -4,6 +4,8 @@ import GradeButton from "./gradeButton"
 import SearchTextInput from "./searchTextInput"
 import PositionButton from "./positionButton";
 
+import './style.css'
+
 interface ToolBarProps {
   handleGrade: (input: React.ChangeEvent<HTMLSelectElement>) => void;
   handlePosition: (input: React.ChangeEvent<HTMLSelectElement>) => void;
@@ -13,7 +15,7 @@ interface ToolBarProps {
 
 function Toolbar({handleGrade, handlePosition, handleSearchWord, handleShowModal}: ToolBarProps) {
   return (
-    <div>
+    <div className="toolBar">
       <GradeButton handleGrade={handleGrade} />
       <PositionButton handlePosition={handlePosition} />
       <SearchTextInput handleSearchWord={handleSearchWord} />

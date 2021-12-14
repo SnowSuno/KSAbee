@@ -24,16 +24,14 @@ function ProfileTable({accountList, loading, fetchUserAccounts, sort, handleSort
         sort={sort}
         handleSort={handleSort}
       />
-      <div>
-        {accountList !== undefined &&
-        accountList.map(
-          (data: AccountType) =>
-            <ProfileTableItem
-              account={data}
-              key={data.summoner_id}
-            />
-        )}
-      </div>
+      {accountList !== undefined &&
+      accountList.map(
+        (data: AccountType) =>
+          <ProfileTableItem
+            account={data}
+            key={data.summoner_id}
+          />
+      )}
     </div>
   );
 }
