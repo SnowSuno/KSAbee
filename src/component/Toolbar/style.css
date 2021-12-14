@@ -8,6 +8,7 @@
 .toolBar select {
     width: 70px;
     height: 24px;
+    margin: 0 4px 0 4px;
     border: 1px solid #E8EAED;
     border-radius: 5px;
     background: white;
@@ -21,8 +22,18 @@
 
 .toolBar select:focus {
     outline: none;
-    border-color: #0077FF;
+    border-color: #ffc966;
     box-shadow: 0 0 0 2px rgba(0, 119, 255, 0.2);
+}
+
+.toolBar button {
+    padding: 2px 4px 2px 4px;
+    margin: 0 2px 0 2px;
+    border-color: #aaa;
+}
+
+.toolBar button:hover {
+    background-color: #E8EAED;
 }
 
 @media screen and (max-width: 768px) {
