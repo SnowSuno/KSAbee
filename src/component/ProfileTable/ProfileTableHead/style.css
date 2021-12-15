@@ -69,7 +69,19 @@ div .active {
     justify-content: center;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 576px) {
+    .profileHead {
+        width: 100%;
+        font-size: 10px;
+    }
+
+    .head__rank {
+        width: 30px;
+    }
+}
+
+
+@media screen and (min-width: 576px) and (max-width: 768px) {
     .profileHead {
         width: 100%;
         font-size: 12px;
