@@ -15,6 +15,7 @@
 .profileHead div span {
     margin-right: 6px;
 }
+
 div img {
     width: 14px;
 }
@@ -71,5 +72,37 @@ div .active {
 @media screen and (max-width: 768px) {
     .profileHead {
         width: 100%;
+        font-size: 12px;
+    }
+
+    .profileHead div button {
+        width: 20px;
+        height: 20px;
+        border-radius: 6px;
+    }
+
+    .head__profile {
+        width: 60px;
+    }
+
+    .head__user {
+        width: 130px;
+    }
+
+    .head__tier {
+        width: 70px;
+    }
+
+    .head__level {
+        width: 70px;
+    }
+
+    .head__gameInfo {
+        width: 70px;
+    }
+
+    .head__position {
+        width: 40px;
+        margin-right: 20px;
     }
 }

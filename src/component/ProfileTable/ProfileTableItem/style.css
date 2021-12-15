@@ -57,7 +57,7 @@
 }
 
 .level {
-    flex-direction: row !important;
+    flex-direction: row;
     width: 80px;
 }
 
@@ -90,6 +90,61 @@
 @media screen and (max-width: 768px) {
     .profileItem {
         width: 100%;
+    }
+
+    .rank {
+        width: 40px;
+    }
+
+    .profile {
+        width: 60px;
+    }
+
+    .profile__img {
+        width: 60px;
+        border-radius: 20px;
+    }
+
+    .user {
+        width: 150px;
+    }
+
+    .user__nick {
+        font-size: 16px;
+    }
+
+    .user__name {
+        font-size: 12px;
+    }
+
+    .tier__rank {
+        font-size: 16px;
+    }
+
+    .tier__lp {
+        font-size: 12px;
+    }
+
+    .tier {
+        width: 100px;
+    }
+
+    .level {
+        width: 70px;
+        font-size: 16px;
+    }
+
+    .gameInfo {
+        width: 70px;
+    }
+
+    .position {
+        width: 40px;
+        margin-right: 20px;
+    }
+
+    .position img {
+        width: 40px;
     }
 }
 
