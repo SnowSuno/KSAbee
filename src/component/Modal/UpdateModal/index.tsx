@@ -23,9 +23,9 @@ const UpdateModal = ({handleShowModal, fetchUserAccounts}: UpdateModalProps) => 
   }
 
   return (
-    <div>
-      <div>
-        <span>학번</span>
+    <div className="updateModal">
+      <div className="modal__input">
+        <div>학번</div>
         <input
           type="text"
           placeholder="19-000"
@@ -36,8 +36,8 @@ const UpdateModal = ({handleShowModal, fetchUserAccounts}: UpdateModalProps) => 
         />
       </div>
 
-      <div>
-        <span>비밀번호</span>
+      <div className="modal__input">
+        <div>비밀번호</div>
         <input
           type="password"
           onChange={
@@ -47,13 +47,18 @@ const UpdateModal = ({handleShowModal, fetchUserAccounts}: UpdateModalProps) => 
         />
       </div>
 
-      <div>
-        <input
-          type="checkbox"
-          checked={changeNickname}
-          onChange={(e:React.ChangeEvent<HTMLInputElement>) => handleChangeNickname(e)}
-        />
-        <span>롤 닉네임</span>
+      <div className="modal__input">
+        <div>
+          <input
+            id="nickCheckbox"
+            type="checkbox"
+            checked={changeNickname}
+            onChange={(e:React.ChangeEvent<HTMLInputElement>) => handleChangeNickname(e)}
+          />
+          <label htmlFor="nickCheckbox">
+            롤 닉네임
+          </label>
+        </div>
         <input
           type="text"
           onChange={
@@ -64,13 +69,18 @@ const UpdateModal = ({handleShowModal, fetchUserAccounts}: UpdateModalProps) => 
         />
       </div>
 
-      <div>
-        <input
-          type="checkbox"
-          checked={changePosition}
-          onChange={(e:React.ChangeEvent<HTMLInputElement>) => handleChangePosition(e)}
-        />
-        <span>포지션</span>
+      <div className="modal__input">
+        <div>
+          <input
+            id="positionCheckbox"
+            type="checkbox"
+            checked={changePosition}
+            onChange={(e:React.ChangeEvent<HTMLInputElement>) => handleChangePosition(e)}
+          />
+          <label htmlFor="positionCheckbox">
+            포지션
+          </label>
+        </div>
         <select
           onChange={
             (e: React.ChangeEvent<HTMLSelectElement>) =>
@@ -90,6 +100,7 @@ const UpdateModal = ({handleShowModal, fetchUserAccounts}: UpdateModalProps) => 
       </div>
 
       <button
+        className="modal__button"
         onClick={async () => {
           try {
             handleShowModal('load')
