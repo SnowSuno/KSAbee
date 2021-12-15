@@ -13,10 +13,9 @@ const DeleteModal = ({handleShowModal, fetchUserAccounts}: DeleteModalProps) => 
   console.log(studentID, password);
 
   return (
-    <div>
-      Delete Modal
-      <div>
-        <span>학번</span>
+    <div className="deleteModal">
+      <div className="modal__input">
+        <div>학번</div>
         <input
           type="text"
           placeholder="19-000"
@@ -27,8 +26,8 @@ const DeleteModal = ({handleShowModal, fetchUserAccounts}: DeleteModalProps) => 
         />
       </div>
 
-      <div>
-        <span>비밀번호</span>
+      <div className="modal__input">
+        <div>비밀번호</div>
         <input
           type="password"
           onChange={
@@ -39,6 +38,7 @@ const DeleteModal = ({handleShowModal, fetchUserAccounts}: DeleteModalProps) => 
       </div>
 
       <button
+        className="modal__button"
         onClick={async () => {
           try {
             handleShowModal('load');

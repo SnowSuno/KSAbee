@@ -1,6 +1,5 @@
 import React, {useState} from 'react'
 import {Account} from "../../../common/api";
-import "../style.css"
 
 interface RegisterModalProps {
   handleShowModal: (input: string) => void;
@@ -14,9 +13,9 @@ const RegisterModal = ({handleShowModal, fetchUserAccounts}: RegisterModalProps)
   const [position, setPosition] = useState<string>('top');
 
   return (
-    <div className="register modal">
-      <div>
-        <span>학번</span>
+    <div className="registerModal">
+      <div className="modal__input">
+        <div>학번</div>
         <input
           type="text"
           placeholder="19-000"
@@ -27,8 +26,8 @@ const RegisterModal = ({handleShowModal, fetchUserAccounts}: RegisterModalProps)
         />
       </div>
 
-      <div>
-        <span>롤 닉네임</span>
+      <div className="modal__input">
+        <div>롤 닉네임</div>
         <input
           type="text"
           onChange={
@@ -38,8 +37,8 @@ const RegisterModal = ({handleShowModal, fetchUserAccounts}: RegisterModalProps)
         />
       </div>
 
-      <div>
-        <span>비밀번호</span>
+      <div className="modal__input">
+        <div>비밀번호</div>
         <input
           type="password"
           onChange={
@@ -49,8 +48,8 @@ const RegisterModal = ({handleShowModal, fetchUserAccounts}: RegisterModalProps)
         />
       </div>
 
-      <div>
-        <span>포지션</span>
+      <div className="modal__input">
+        <div>포지션</div>
         <select
           onChange={
             (e: React.ChangeEvent<HTMLSelectElement>) =>
@@ -66,6 +65,7 @@ const RegisterModal = ({handleShowModal, fetchUserAccounts}: RegisterModalProps)
       </div>
 
       <button
+        className="modal__button"
         onClick={async () => {
           try {
             handleShowModal('load');
