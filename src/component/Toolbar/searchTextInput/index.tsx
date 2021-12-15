@@ -1,18 +1,18 @@
 import React from 'react'
 
-interface searchTextInputPorps {
+import './style.css'
+
+interface searchTextInputProps {
   handleSearchWord: (input: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-export default function SearchTextInput({handleSearchWord}: searchTextInputPorps) {
+export default function SearchTextInput({handleSearchWord}: searchTextInputProps) {
   return (
-    <div>
-      <input
-        type={"text"}
-        onChange={handleSearchWord}
-        className={"searchInput"} 
-        placeholder={"Search"}
-      />
-    </div>
+    <input
+      type={"text"}
+      onChange={handleSearchWord}
+      className={"searchInput"}
+      placeholder={"Search"}
+    />
   )
 }

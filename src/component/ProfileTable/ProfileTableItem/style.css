@@ -1,7 +1,9 @@
 .profileItem {
     display: flex;
     flex-direction: row;
-    margin: 16px 0 16px 0;
+    justify-content: space-between;
+    width: 768px;
+    margin: 16px auto 16px auto;
 }
 
 .profileItem div {
@@ -55,7 +57,7 @@
 }
 
 .level {
-    flex-direction: row !important;
+    flex-direction: row;
     width: 80px;
 }
 
@@ -84,5 +86,132 @@
 .position img {
     width: 50px;
 }
+
+@media screen and (max-width: 576px){
+    .profileItem {
+        width: 100%;
+    }
+
+    .rank {
+        width: 30px;
+    }
+
+    .profile {
+        display: none !important;
+    }
+
+    .user {
+        padding-left: 0;
+        width: 110px;
+    }
+
+    .user__nick {
+        font-size: 14px;
+    }
+
+    .user__name {
+        font-size: 12px;
+    }
+
+    .tier {
+        width: 80px;
+    }
+
+    .tier__rank {
+        font-size: 14px;
+    }
+
+    .tier__lp {
+        font-size: 12px;
+    }
+
+    .level {
+        width: 50px;
+        font-size: 14px;
+    }
+
+    .gameInfo {
+        width: 44px;
+    }
+
+    .gameInfo .winRate {
+        font-size: 14px;
+    }
+
+    .gameInfo .matches {
+        font-size: 12px;
+    }
+
+    .position {
+        width: 30px;
+    }
+
+    .position img {
+        width: 30px;
+    }
+}
+
+@media screen and (min-width: 576px) and (max-width: 768px) {
+    .profileItem {
+        width: 100%;
+    }
+
+    .rank {
+        width: 40px;
+    }
+
+    .profile {
+        width: 60px;
+    }
+
+    .profile__img {
+        width: 60px;
+        border-radius: 20px;
+    }
+
+    .user {
+        width: 150px;
+    }
+
+    .user__nick {
+        font-size: 16px;
+    }
+
+    .user__name {
+        font-size: 12px;
+    }
+
+    .tier__rank {
+        font-size: 16px;
+    }
+
+    .tier__lp {
+        font-size: 12px;
+    }
+
+    .tier {
+        width: 100px;
+    }
+
+    .level {
+        width: 70px;
+        font-size: 16px;
+    }
+
+    .gameInfo {
+        width: 70px;
+    }
+
+    .position {
+        width: 40px;
+        margin-right: 20px;
+    }
+
+    .position img {
+        width: 40px;
+    }
+}
+
+
 
 

@@ -1,0 +1,12 @@
+.searchInput {
+    width: 180px;
+    height: 30px;
+    border: 2px solid #E8EAED;
+    border-radius: 5px;
+    background: white;
+    box-shadow: 0 1px 3px -2px #9098A9;
+}
+
+.searchInput:focus {
+    outline: 2px solid #ffc966;
+}
