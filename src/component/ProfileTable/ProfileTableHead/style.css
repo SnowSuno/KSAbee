@@ -75,7 +75,45 @@ div .active {
         font-size: 10px;
     }
 
+    .profileHead p {
+        text-align: center;
+        margin-bottom: 2px;
+    }
+
+    .profileHead div button {
+        width: 16px;
+        height: 16px;
+        border-radius: 6px;
+    }
+
     .head__rank {
+        width: 30px;
+    }
+
+    .head__profile {
+        width: 110px;
+    }
+
+    .head__user {
+        display: none !important;
+    }
+
+    .head__tier {
+        width: 80px;
+        flex-direction: column;
+    }
+
+    .head__level {
+        width: 50px;
+        flex-direction: column;
+    }
+
+    .head__gameInfo {
+        width: 44px;
+        flex-direction: column;
+    }
+
+    .head__position {
         width: 30px;
     }
 }

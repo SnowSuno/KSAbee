@@ -134,6 +134,14 @@
         width: 44px;
     }
 
+    .gameInfo .winRate {
+        font-size: 14px;
+    }
+
+    .gameInfo .matches {
+        font-size: 12px;
+    }
+
     .position {
         width: 30px;
     }

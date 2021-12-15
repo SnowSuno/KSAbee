@@ -21,7 +21,7 @@ const ProfileTableHead = ({sort, handleSort}: ProfileTableHeadProps) => {
       <div className="head__user">
       </div>
       <div className="head__tier">
-        <span>티어</span>
+        <p>티어</p>
         <div>
           <button
             onClick={() => handleSort('tier')}
@@ -38,7 +38,7 @@ const ProfileTableHead = ({sort, handleSort}: ProfileTableHeadProps) => {
         </div>
       </div>
       <div className="head__level">
-        <span>레벨</span>
+        <p>레벨</p>
         <div>
           <button
             onClick={() => handleSort('level')}
@@ -55,7 +55,7 @@ const ProfileTableHead = ({sort, handleSort}: ProfileTableHeadProps) => {
         </div>
       </div>
       <div className="head__gameInfo">
-        <span>승률</span>
+        <p>승률</p>
         <div>
           <button
             onClick={() => handleSort('winRate')}
