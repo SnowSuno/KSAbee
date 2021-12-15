@@ -17,12 +17,16 @@ function Toolbar({handleGrade, handlePosition, handleSearchWord, handleShowModal
   return (
     <div className="toolBar">
       <SearchTextInput handleSearchWord={handleSearchWord} />
-      <div>
-        <GradeButton handleGrade={handleGrade} />
-        <PositionButton handlePosition={handlePosition} />
-        <button onClick={() => handleShowModal('register')}>등록</button>
-        <button onClick={() => handleShowModal('update')}>계정 수정</button>
-        <button onClick={() => handleShowModal('delete')}>계정 삭제</button>
+      <div className="toolBar__right">
+        <div>
+          <GradeButton handleGrade={handleGrade} />
+          <PositionButton handlePosition={handlePosition} />
+        </div>
+        <div>
+          <button onClick={() => handleShowModal('register')}>등록</button>
+          <button onClick={() => handleShowModal('update')}>계정 수정</button>
+          <button onClick={() => handleShowModal('delete')}>계정 삭제</button>
+        </div>
       </div>
     </div>
   );

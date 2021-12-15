@@ -36,8 +36,21 @@
     background-color: #E8EAED;
 }
 
+.toolBar__right {
+    display: flex;
+    flex-direction: row;
+}
+
 @media screen and (max-width: 768px) {
     .toolBar {
         width: 100%;
+    }
+
+    .toolBar__right {
+        flex-direction: column;
+    }
+
+    .toolBar__right div:nth-child(1) {
+        margin-bottom: 20px;
     }
 }
