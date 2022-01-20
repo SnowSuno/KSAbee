@@ -1,19 +1,18 @@
-import {PositionType, TierType} from "./enums";
-
 export interface UserType {
     name: string;
     sid: string
 }
 
+type PositionType = "top" | "jg" | "mid" | "bot" | "sup";
+
 export interface AccountType {
-    index: number;
     user: UserType;
     nickname: string;
     summoner_id: number;
     profile_image: string;
     level: number;
     position: PositionType;
-    tier: TierType;
+    tier: string;
     league_points: number;
     wins: number;
     losses: number;

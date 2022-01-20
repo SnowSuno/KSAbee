@@ -1,38 +1,49 @@
 import React, {useEffect} from "react";
+import "./style.scss";
 
 import ProfileTableHead from './ProfileTableHead'
 import ProfileTableItem from "./ProfileTableItem";
-import './style.css'
 
-import { AccountType } from "../../common/types";
+import {AccountType} from "../../common/types";
+import {SortProps} from "../../common/sort";
 
 interface ProfileTableProps {
   accountList: AccountType[];
   loading: boolean;
   fetchUserAccounts: () => Promise<void>
-  sort: string;
-  handleSort: (input: string) => void;
+  sortProps: SortProps;
+  handleSortProps: (option: SortProps) => void;
 }
-function ProfileTable({accountList, loading, fetchUserAccounts, sort, handleSort}: ProfileTableProps) {
+
+function ProfileTable(
+  {accountList, loading, fetchUserAccounts, sortProps, handleSortProps}: ProfileTableProps
+) {
   useEffect(() => {
-    fetchUserAccounts();
+    fetchUserAccounts().then();
   }, [fetchUserAccounts])
 
   return (
-    <div className="profileTable">
+    <table className="profileTable">
+      <thead>
       <ProfileTableHead
-        sort={sort}
-        handleSort={handleSort}
+        sortProps={sortProps}
+        handleSortProps={handleSortProps}
       />
-      {accountList !== undefined &&
-      accountList.map(
-        (data: AccountType) =>
+      </thead>
+      <tbody>
+      {accountList.map(
+        (data: AccountType, index) =>
           <ProfileTableItem
+            index={index}
             account={data}
             key={data.summoner_id}
           />
       )}
-    </div>
+      </tbody>
+      {/*<div className="items">*/}
+      {/*  */}
+      {/*</div>*/}
+    </table>
   );
 }
 

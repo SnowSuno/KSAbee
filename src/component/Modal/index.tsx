@@ -6,54 +6,57 @@ import DeleteModal from "./DeleteModal";
 
 import './style.css'
 
+export enum ModalState {
+  REGISTER = "register",
+  UPDATE = "update",
+  DELETE = "delete",
+}
+
 interface ModalProps {
-  showModal : string;
-  handleShowModal: (input: string) => void;
+  modalState: ModalState | null;
+  handleModalState: (state: ModalState | null) => void;
   fetchUserAccounts: () => Promise<void>;
 }
 
-const Modal = ({showModal, handleShowModal, fetchUserAccounts}: ModalProps) => {
+
+const Modal = ({modalState, handleModalState, fetchUserAccounts}: ModalProps) => {
   return (
-      <div className={showModal === 'null' ? 'modal__null' : 'modal__background'}>
-        <div className="center">
-          {showModal === 'load'
-            ? <div className="loader">
-            </div>
-            : ''
-          }
-          <div className="modal">
-            {showModal === 'load' || showModal === 'null' ? '' :
-              <div className="modal__header">
+    <div className={modalState === null ? 'modal__null' : 'modal__background'}>
+      <div className="center">
+
+        <div className="modal">
+          {modalState === null ? '' :
+            <div className="modal__header">
                 <span>
                   {
-                    showModal === 'register' ? '계정등록'
-                  : showModal === 'update' ? '계정 업데이트'
-                  : showModal === 'delete' ? '계정삭제' : ''
+                    modalState === 'register' ? '계정등록'
+                      : modalState === 'update' ? '계정 업데이트'
+                        : modalState === 'delete' ? '계정삭제' : ''
                   }
                 </span>
-                <button onClick={() => handleShowModal('null')}>X</button>
-              </div>
-            }
-            {showModal === 'register'
-              ? <RegisterModal
-                handleShowModal={handleShowModal}
-                fetchUserAccounts={fetchUserAccounts}
-              />
-              : showModal === 'update'
-              ? <UpdateModal
-                  handleShowModal={handleShowModal}
-                  fetchUserAccounts={fetchUserAccounts}
-                />
-              : showModal === 'delete'
-              ? <DeleteModal
-                  handleShowModal={handleShowModal}
-                  fetchUserAccounts={fetchUserAccounts}
-                />
-              : ''
-            }
-          </div>
+              <button onClick={() => handleModalState(null)}>X</button>
+            </div>
+          }
+          {/*{modalState === 'register'*/}
+          {/*  ? <RegisterModal*/}
+          {/*    handleShowModal={handleModalState}*/}
+          {/*    fetchUserAccounts={fetchUserAccounts}*/}
+          {/*  />*/}
+          {/*  : modalState === 'update'*/}
+          {/*  ? <UpdateModal*/}
+          {/*      handleShowModal={handleModalState}*/}
+          {/*      fetchUserAccounts={fetchUserAccounts}*/}
+          {/*    />*/}
+          {/*  : modalState === 'delete'*/}
+          {/*  ? <DeleteModal*/}
+          {/*      handleShowModal={handleModalState}*/}
+          {/*      fetchUserAccounts={fetchUserAccounts}*/}
+          {/*    />*/}
+          {/*  : ''*/}
+          {/*}*/}
         </div>
       </div>
+    </div>
   )
 }
 
