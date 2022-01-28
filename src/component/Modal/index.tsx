@@ -24,39 +24,40 @@ const Modal = ({modalState, handleModalState, fetchUserAccounts}: ModalProps) =>
   return (
     <div className={modalState === null ? 'modal__null' : 'modal__background'}>
       <div className="center">
-
-        <div className="modal">
-          {modalState === null ? ''
-          : modalState === ModalState.LOAD ? ''
-          : <div className="modal__header">
-                <span>
-                  {
-                    modalState === ModalState.REGISTER ? '계정등록'
-                    : modalState === ModalState.UPDATE ? '계정 업데이트'
-                    : modalState === ModalState.DELETE ? '계정삭제' : ''
-                  }
-                </span>
+        {
+          modalState === null ? ''
+        : modalState === ModalState.LOAD
+        ? <div className="loader"></div>
+        : <div className="modal">
+            <div className="modal__header">
+              <span>
+                {
+                  modalState === ModalState.REGISTER ? '계정등록'
+                  : modalState === ModalState.UPDATE ? '계정 업데이트'
+                  : modalState === ModalState.DELETE ? '계정삭제' : ''
+                }
+              </span>
               <button onClick={() => handleModalState(null)}>X</button>
             </div>
-          }
-          {modalState === ModalState.REGISTER
-            ? <RegisterModal
-              handleShowModal={handleModalState}
-              fetchUserAccounts={fetchUserAccounts}
-            />
-            : modalState === ModalState.UPDATE
-            ? <UpdateModal
+            {modalState === ModalState.REGISTER
+              ? <RegisterModal
                 handleShowModal={handleModalState}
                 fetchUserAccounts={fetchUserAccounts}
               />
-            : modalState === ModalState.DELETE
-            ? <DeleteModal
+              : modalState === ModalState.UPDATE
+              ? <UpdateModal
                 handleShowModal={handleModalState}
                 fetchUserAccounts={fetchUserAccounts}
               />
-            : ''
-          }
-        </div>
+              : modalState === ModalState.DELETE
+              ? <DeleteModal
+                handleShowModal={handleModalState}
+                fetchUserAccounts={fetchUserAccounts}
+              />
+              : ''
+            }
+          </div>
+        }
       </div>
     </div>
   )
