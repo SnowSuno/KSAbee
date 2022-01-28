@@ -1,8 +1,9 @@
 import React, {useState} from "react";
 import {Account} from "../../../common/api";
+import {ModalState} from "../index";
 
 interface UpdateModalProps {
-  handleShowModal: (input: string) => void;
+  handleShowModal: (input: ModalState | null) => void;
   fetchUserAccounts: () => Promise<void>;
 }
 
@@ -103,7 +104,7 @@ const UpdateModal = ({handleShowModal, fetchUserAccounts}: UpdateModalProps) => 
         className="modal__button"
         onClick={async () => {
           try {
-            handleShowModal('load')
+            // handleShowModal('load')
             await Account.updateAccount(studentID, {
               password,
               nickname: changeNickname ? nickname : undefined,
@@ -114,7 +115,7 @@ const UpdateModal = ({handleShowModal, fetchUserAccounts}: UpdateModalProps) => 
           } catch (error) {
             console.log(error);
           } finally {
-            handleShowModal('null');
+            handleShowModal(null);
           }
         }}
       >

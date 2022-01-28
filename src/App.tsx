@@ -28,7 +28,7 @@ export default function App() {
     position: "",
   });
 
-  const [modalstate, setModalstate] = useState<ModalState | null>(null);
+  const [modalState, setModalState] = useState<ModalState | null>(null);
 
   const handleSortProps = (options: SortProps) => {
     setSortProps(options);
@@ -39,7 +39,7 @@ export default function App() {
   }
 
   const handleModalState = (state: ModalState | null) => {
-    setModalstate(state);
+    setModalState(state);
   }
 
   const fetchUserAccounts = useCallback(async () => {
@@ -82,7 +82,7 @@ export default function App() {
     </footer>
 
     <Modal
-      modalState={modalstate}
+      modalState={modalState}
       handleModalState={handleModalState}
       fetchUserAccounts={fetchUserAccounts}
     />
