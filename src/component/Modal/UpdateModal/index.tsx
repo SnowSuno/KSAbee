@@ -104,7 +104,7 @@ const UpdateModal = ({handleShowModal, fetchUserAccounts}: UpdateModalProps) => 
         className="modal__button"
         onClick={async () => {
           try {
-            // handleShowModal('load')
+            handleShowModal(ModalState.LOAD);
             await Account.updateAccount(studentID, {
               password,
               nickname: changeNickname ? nickname : undefined,

@@ -39,17 +39,17 @@ const Modal = ({modalState, handleModalState, fetchUserAccounts}: ModalProps) =>
               <button onClick={() => handleModalState(null)}>X</button>
             </div>
           }
-          {modalState === 'register'
+          {modalState === ModalState.REGISTER
             ? <RegisterModal
               handleShowModal={handleModalState}
               fetchUserAccounts={fetchUserAccounts}
             />
-            : modalState === 'update'
+            : modalState === ModalState.UPDATE
             ? <UpdateModal
                 handleShowModal={handleModalState}
                 fetchUserAccounts={fetchUserAccounts}
               />
-            : modalState === 'delete'
+            : modalState === ModalState.DELETE
             ? <DeleteModal
                 handleShowModal={handleModalState}
                 fetchUserAccounts={fetchUserAccounts}

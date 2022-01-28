@@ -10,10 +10,10 @@ import {FilterProps, Grade, Position} from "../../common/filter";
 interface ToolBarProps {
   filterProps: FilterProps;
   handleFilterProps: (options: FilterProps) => void;
-  handleModalstate: (state: ModalState) => void;
+  handleModalState: (state: ModalState) => void;
 }
 
-function Toolbar({filterProps, handleFilterProps, handleModalstate}: ToolBarProps) {
+function Toolbar({filterProps, handleFilterProps, handleModalState}: ToolBarProps) {
   const handleSearch = (event: ChangeEvent<HTMLInputElement>) => {
     handleFilterProps({...filterProps, search: event.target.value});
   }
@@ -39,14 +39,22 @@ function Toolbar({filterProps, handleFilterProps, handleModalstate}: ToolBarProp
           values={Position}
           handle={handlePosition}
         />
-        <button onClick={() => handleModalstate(ModalState.UPDATE)}>수정</button>
         <button
-          onClick={() => handleModalstate(ModalState.REGISTER)}
+          onClick={() => handleModalState(ModalState.UPDATE)}
+        >
+          수정
+        </button>
+        {/*<button*/}
+        {/*  onClick={() => handleModalState(ModalState.DELETE)}*/}
+        {/*>*/}
+        {/*  삭제*/}
+        {/*</button>*/}
+        <button
+          onClick={() => handleModalState(ModalState.REGISTER)}
           className="primary"
         >
           등록
         </button>
-        {/*<button onClick={() => handleModalstate(ModalState.DELETE)}>계정 삭제</button>*/}
       </div>
     </div>
   );

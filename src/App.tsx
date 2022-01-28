@@ -1,4 +1,4 @@
-import React, {useCallback, useEffect, useState} from "react";
+import React, {useCallback, useState} from "react";
 import "./App.css";
 
 import Header from "./component/Header";
@@ -14,7 +14,6 @@ import {compare, CompareKey, SortProps} from "./common/sort";
 import {filter, FilterProps} from "./common/filter";
 
 export default function App() {
-  const [loading, setLoading] = useState<boolean>(true);
   const [accountList, setAccountList] = useState<AccountType[]>([]);
 
   const [sortProps, setSortProps] = useState<SortProps>({
@@ -28,7 +27,7 @@ export default function App() {
     position: "",
   });
 
-  const [modalState, setModalState] = useState<ModalState | null>(null);
+  const [modalState, setModalState] = useState<ModalState | null>(ModalState.LOAD);
 
   const handleSortProps = (options: SortProps) => {
     setSortProps(options);
@@ -49,11 +48,11 @@ export default function App() {
     } catch (e) {
       console.log(e)
     } finally {
-      setLoading(false);
+      setModalState(null);
     }
   }, []);
 
-  return (<>
+  return <>
     <header>
       <Header/>
     </header>
@@ -62,7 +61,7 @@ export default function App() {
       <Toolbar
         filterProps={filterProps}
         handleFilterProps={handleFilterProps}
-        handleModalstate={handleModalState}
+        handleModalState={handleModalState}
       />
       <ProfileTable
         accountList={
@@ -70,7 +69,6 @@ export default function App() {
             .filter(filter(filterProps))
             .sort(compare(sortProps))
         }
-        loading={loading}
         fetchUserAccounts={fetchUserAccounts}
         sortProps={sortProps}
         handleSortProps={handleSortProps}
@@ -86,5 +84,5 @@ export default function App() {
       handleModalState={handleModalState}
       fetchUserAccounts={fetchUserAccounts}
     />
-  </>);
+  </>;
 }
