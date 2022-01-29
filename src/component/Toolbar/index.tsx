@@ -1,32 +1,52 @@
-import React from "react";
+import React, {ChangeEvent} from "react";
+import SearchBar from "./SearchBar"
 
-import GradeButton from "./gradeButton"
-import SearchTextInput from "./searchTextInput"
-import PositionButton from "./positionButton";
+import Dropdown from "./Dropdown";
 
-import './style.css'
+import './style.scss'
+import {ModalState} from "../Modal";
+import {FilterProps, Grade, Position} from "../../common/filter";
 
 interface ToolBarProps {
-  handleGrade: (input: React.ChangeEvent<HTMLSelectElement>) => void;
-  handlePosition: (input: React.ChangeEvent<HTMLSelectElement>) => void;
-  handleSearchWord: (input: React.ChangeEvent<HTMLInputElement>) => void;
-  handleShowModal: (input: string) => void;
+  filterProps: FilterProps;
+  handleFilterProps: (options: FilterProps) => void;
+  handleModalstate: (state: ModalState) => void;
 }
 
-function Toolbar({handleGrade, handlePosition, handleSearchWord, handleShowModal}: ToolBarProps) {
+function Toolbar({filterProps, handleFilterProps, handleModalstate}: ToolBarProps) {
+  const handleSearch = (event: ChangeEvent<HTMLInputElement>) => {
+    handleFilterProps({...filterProps, search: event.target.value});
+  }
+
+  const handleGrade = (value: keyof typeof Grade) => {
+    handleFilterProps({...filterProps, grade: value});
+  }
+
+  const handlePosition = (value: keyof typeof Position) => {
+    handleFilterProps({...filterProps, position: value});
+  }
+
+
   return (
     <div className="toolBar">
-      <SearchTextInput handleSearchWord={handleSearchWord} />
-      <div className="toolBar__right">
-        <div>
-          <GradeButton handleGrade={handleGrade} />
-          <PositionButton handlePosition={handlePosition} />
-        </div>
-        <div>
-          <button onClick={() => handleShowModal('register')}>등록</button>
-          <button onClick={() => handleShowModal('update')}>계정 수정</button>
-          <button onClick={() => handleShowModal('delete')}>계정 삭제</button>
-        </div>
+      <SearchBar handleSearchWord={handleSearch} />
+      <div className="tab">
+        <Dropdown
+          values={Grade}
+          handle={handleGrade}
+        />
+        <Dropdown
+          values={Position}
+          handle={handlePosition}
+        />
+        <button onClick={() => handleModalstate(ModalState.UPDATE)}>수정</button>
+        <button
+          onClick={() => handleModalstate(ModalState.REGISTER)}
+          className="primary"
+        >
+          등록
+        </button>
+        {/*<button onClick={() => handleModalstate(ModalState.DELETE)}>계정 삭제</button>*/}
       </div>
     </div>
   );

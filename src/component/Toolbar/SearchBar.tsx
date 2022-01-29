@@ -1,12 +1,11 @@
 import React from 'react'
 
-import './style.css'
 
 interface searchTextInputProps {
   handleSearchWord: (input: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-export default function SearchTextInput({handleSearchWord}: searchTextInputProps) {
+export default function SearchBar({handleSearchWord}: searchTextInputProps) {
   return (
     <input
       type={"text"}

@@ -1,0 +1,38 @@
+.Header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 10px 100px 10px 100px;
+  margin: 0 0 20px 0;
+  height: 80px;
+  background-color: #eab635;
+  box-shadow: rgba(17, 12, 46, 0.15) 0 5px 10px 0;
+
+  img {
+    width: 60px;
+    height: 60px;
+    padding: 0 20px 0 0;
+  }
+
+  .text div {
+    &:nth-child(1) {
+      span {
+        font-size: 33px;
+        font-weight: 500;
+
+        &:nth-child(1) {color: #FFFFFF;}
+        &:nth-child(2) {color: #99815d;}
+      }
+    }
+
+    &:nth-child(2) {
+      padding-left: 2px;
+      color: #eeeeee;
+      font-weight: 300;
+      font-size: 16px;
+    }
+  }
+}

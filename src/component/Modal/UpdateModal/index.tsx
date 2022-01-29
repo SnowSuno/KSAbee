@@ -1,8 +1,9 @@
 import React, {useState} from "react";
 import {Account} from "../../../common/api";
+import {ModalState} from "../index";
 
 interface UpdateModalProps {
-  handleShowModal: (input: string) => void;
+  handleShowModal: (input: ModalState | null) => void;
   fetchUserAccounts: () => Promise<void>;
 }
 
@@ -14,11 +15,11 @@ const UpdateModal = ({handleShowModal, fetchUserAccounts}: UpdateModalProps) => 
   const [changePosition, setChangePosition] = useState(false);
   const [position, setPosition] = useState<string>('top');
 
-  const handleChangeNickname = (e:React.ChangeEvent<HTMLInputElement>) => {
+  const handleChangeNickname = (e: React.ChangeEvent<HTMLInputElement>) => {
     setChangeNickname(!changeNickname);
   }
 
-  const handleChangePosition = (e:React.ChangeEvent<HTMLInputElement>) => {
+  const handleChangePosition = (e: React.ChangeEvent<HTMLInputElement>) => {
     setChangePosition(!changePosition);
   }
 
@@ -53,7 +54,7 @@ const UpdateModal = ({handleShowModal, fetchUserAccounts}: UpdateModalProps) => 
             id="nickCheckbox"
             type="checkbox"
             checked={changeNickname}
-            onChange={(e:React.ChangeEvent<HTMLInputElement>) => handleChangeNickname(e)}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleChangeNickname(e)}
           />
           <label htmlFor="nickCheckbox">
             롤 닉네임
@@ -75,7 +76,7 @@ const UpdateModal = ({handleShowModal, fetchUserAccounts}: UpdateModalProps) => 
             id="positionCheckbox"
             type="checkbox"
             checked={changePosition}
-            onChange={(e:React.ChangeEvent<HTMLInputElement>) => handleChangePosition(e)}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleChangePosition(e)}
           />
           <label htmlFor="positionCheckbox">
             포지션
@@ -103,18 +104,18 @@ const UpdateModal = ({handleShowModal, fetchUserAccounts}: UpdateModalProps) => 
         className="modal__button"
         onClick={async () => {
           try {
-            handleShowModal('load')
+            // handleShowModal('load')
             await Account.updateAccount(studentID, {
-                password,
-                nickname: changeNickname ? nickname : undefined,
-                position: changePosition ? position : undefined
+              password,
+              nickname: changeNickname ? nickname : undefined,
+              position: changePosition ? position : undefined
             });
             await fetchUserAccounts();
             alert('계정을 업데이트 하였습니다.')
-          } catch(error) {
+          } catch (error) {
             console.log(error);
           } finally {
-            handleShowModal('null');
+            handleShowModal(null);
           }
         }}
       >
