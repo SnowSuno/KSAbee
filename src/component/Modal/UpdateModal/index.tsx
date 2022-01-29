@@ -15,11 +15,11 @@ const UpdateModal = ({handleShowModal, fetchUserAccounts}: UpdateModalProps) => 
   const [changePosition, setChangePosition] = useState(false);
   const [position, setPosition] = useState<string>('top');
 
-  const handleChangeNickname = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChangeNickname = () => {
     setChangeNickname(!changeNickname);
   }
 
-  const handleChangePosition = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChangePosition = () => {
     setChangePosition(!changePosition);
   }
 
@@ -54,7 +54,7 @@ const UpdateModal = ({handleShowModal, fetchUserAccounts}: UpdateModalProps) => 
             id="nickCheckbox"
             type="checkbox"
             checked={changeNickname}
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleChangeNickname(e)}
+            onChange={() => handleChangeNickname()}
           />
           <label htmlFor="nickCheckbox">
             롤 닉네임
@@ -76,7 +76,7 @@ const UpdateModal = ({handleShowModal, fetchUserAccounts}: UpdateModalProps) => 
             id="positionCheckbox"
             type="checkbox"
             checked={changePosition}
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleChangePosition(e)}
+            onChange={() => handleChangePosition()}
           />
           <label htmlFor="positionCheckbox">
             포지션
