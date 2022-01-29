@@ -9,14 +9,13 @@ import {SortProps} from "../../common/sort";
 
 interface ProfileTableProps {
   accountList: AccountType[];
-  loading: boolean;
   fetchUserAccounts: () => Promise<void>
   sortProps: SortProps;
   handleSortProps: (option: SortProps) => void;
 }
 
 function ProfileTable(
-  {accountList, loading, fetchUserAccounts, sortProps, handleSortProps}: ProfileTableProps
+  {accountList, fetchUserAccounts, sortProps, handleSortProps}: ProfileTableProps
 ) {
   useEffect(() => {
     fetchUserAccounts().then();
@@ -40,9 +39,6 @@ function ProfileTable(
           />
       )}
       </tbody>
-      {/*<div className="items">*/}
-      {/*  */}
-      {/*</div>*/}
     </table>
   );
 }
