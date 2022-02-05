@@ -1,9 +1,7 @@
 import React from "react";
 import {CompareKey, SortProps} from "../../common/sort";
 
-// import './ProfileTableHead/style.scss'
-// import upImg from "../../img/icons/up.png"
-// import downImg from "../../img/icons/down.png"
+import {ReactComponent as SortIcon} from "../../img/sort.svg";
 
 interface ProfileTableHeadProps {
   sortProps: SortProps;
@@ -15,19 +13,11 @@ const ProfileTableHead = ({sortProps, handleSortProps}: ProfileTableHeadProps) =
     handleSortProps({
       key, reverse: (key === sortProps.key) && !sortProps.reverse,
     })
-
-    // if (key === sortProps.key) {
-    //   handleSortProps({...sortProps, reverse: !sortProps.reverse});
-    // } else {
-    //   handleSortProps({
-    //     key, reverse: false
-    //   })
-    // }
   }
 
   const showStatus = (key: CompareKey) => (
     key === sortProps.key
-      ? (sortProps.reverse ? "∧" : "∨")
+      ? <SortIcon className={sortProps.reverse ? "reverse" : ""}/>
       : null
   )
 
