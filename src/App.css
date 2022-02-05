@@ -5,8 +5,7 @@ section {
     width: 80vw;
     max-width: 1080px;
     min-width: 720px;
-    /*width: 1080px;*/
-    min-height: 100vh;
+    min-height: calc(100vh - 130px);
 
     display: flex;
     flex-direction: column;

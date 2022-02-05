@@ -9,37 +9,42 @@ import {SortProps} from "../../common/sort";
 
 interface ProfileTableProps {
   accountList: AccountType[];
+  loading: boolean;
   fetchUserAccounts: () => Promise<void>
   sortProps: SortProps;
   handleSortProps: (option: SortProps) => void;
 }
 
 function ProfileTable(
-  {accountList, fetchUserAccounts, sortProps, handleSortProps}: ProfileTableProps
+  {accountList, loading, fetchUserAccounts, sortProps, handleSortProps}: ProfileTableProps
 ) {
   useEffect(() => {
     fetchUserAccounts().then();
   }, [fetchUserAccounts])
 
   return (
-    <table className="profileTable">
-      <thead>
-      <ProfileTableHead
-        sortProps={sortProps}
-        handleSortProps={handleSortProps}
-      />
-      </thead>
-      <tbody>
-      {accountList.map(
-        (data: AccountType, index) =>
-          <ProfileTableItem
-            index={index}
-            account={data}
-            key={data.summoner_id}
-          />
-      )}
-      </tbody>
-    </table>
+    <>
+      <table className="profileTable">
+        <thead>
+        <ProfileTableHead
+          sortProps={sortProps}
+          handleSortProps={handleSortProps}
+        />
+        </thead>
+        {loading ||
+            <tbody>
+            {accountList.map(
+              (data: AccountType, index) =>
+                <ProfileTableItem
+                  index={index}
+                  account={data}
+                  key={data.summoner_id}
+                />
+            )}
+            </tbody>}
+      </table>
+      {loading && <div className="loader"/>}
+    </>
   );
 }
 

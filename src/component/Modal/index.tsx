@@ -4,7 +4,7 @@ import RegisterModal from "./RegisterModal";
 import UpdateModal from "./UpdateModal";
 import DeleteModal from "./DeleteModal";
 
-import './style.css'
+// import './style.css'
 
 export enum ModalState {
   REGISTER = "register",

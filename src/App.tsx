@@ -15,6 +15,7 @@ import {filter, FilterProps} from "./common/filter";
 
 export default function App() {
   const [accountList, setAccountList] = useState<AccountType[]>([]);
+  const [loading, setLoading] = useState<boolean>(false);
 
   const [sortProps, setSortProps] = useState<SortProps>({
     key: CompareKey.TIER,
@@ -27,7 +28,8 @@ export default function App() {
     position: "",
   });
 
-  const [modalState, setModalState] = useState<ModalState | null>(ModalState.LOAD);
+  const [modalState, setModalState] = useState<ModalState | null>(null);
+
 
   const handleSortProps = (options: SortProps) => {
     setSortProps(options);
@@ -43,12 +45,14 @@ export default function App() {
 
   const fetchUserAccounts = useCallback(async () => {
     try {
+      setLoading(true);
       const accountList = await Account.getAccounts();
       setAccountList(accountList);
     } catch (e) {
       console.log(e)
     } finally {
-      setModalState(null);
+      setLoading(false);
+      // setModalState(null);
     }
   }, []);
 
@@ -69,6 +73,7 @@ export default function App() {
             .filter(filter(filterProps))
             .sort(compare(sortProps))
         }
+        loading={loading}
         fetchUserAccounts={fetchUserAccounts}
         sortProps={sortProps}
         handleSortProps={handleSortProps}
