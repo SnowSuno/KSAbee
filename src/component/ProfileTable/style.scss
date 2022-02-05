@@ -3,13 +3,21 @@
 .profileTable {
   width: 100%;
   border-collapse: collapse;
+  margin-bottom: 20px;
+
+  tr {
+    border-bottom: 1px #e0e0e0 solid;
+  }
 
   tbody tr {
-    border-top: 1px #e0e0e0 solid;
     cursor: pointer;
 
     &:hover {
       background: rgba(0, 0, 0, 0.03);
+    }
+
+    &:last-child {
+      border: none;
     }
   }
 
@@ -18,9 +26,6 @@
     text-align: center;
   }
 
-  //.profile {
-  //  padding-left: 10px;
-  //}
   th, td {
     padding-inline: 10px;
   }
@@ -125,7 +130,7 @@
 }
 
 .loader {
-  margin-top: calc(50vh - 217px);
+  margin-top: calc(50vh - 237px);
   margin-inline: auto;
   border: 3px solid #f3f3f3;
   border-top: 3px solid #a8a8a8;
@@ -136,6 +141,10 @@
 }
 
 @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
