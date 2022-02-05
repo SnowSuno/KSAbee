@@ -1,16 +1,12 @@
 import React from "react";
+import "./style.scss";
 
 import RegisterModal from "./RegisterModal";
 import UpdateModal from "./UpdateModal";
-import DeleteModal from "./DeleteModal";
-
-// import './style.css'
 
 export enum ModalState {
   REGISTER = "register",
   UPDATE = "update",
-  DELETE = "delete",
-  LOAD = "load",
 }
 
 interface ModalProps {
@@ -21,45 +17,49 @@ interface ModalProps {
 
 
 const Modal = ({modalState, handleModalState, fetchUserAccounts}: ModalProps) => {
+  const closeModal = () => handleModalState(null);
+
+  const modal = {
+    [ModalState.REGISTER]: <RegisterModal />,
+    [ModalState.UPDATE]: <UpdateModal />
+  }
+
   return (
-    <div className={modalState === null ? 'modal__null' : 'modal__background'}>
-      <div className="center">
-        {
-          modalState === null ? ''
-        : modalState === ModalState.LOAD
-        ? <div className="loader"></div>
-        : <div className="modal">
-            <div className="modal__header">
-              <span>
-                {
-                  modalState === ModalState.REGISTER ? '계정등록'
-                  : modalState === ModalState.UPDATE ? '계정 업데이트'
-                  : modalState === ModalState.DELETE ? '계정삭제' : ''
-                }
-              </span>
-              <button onClick={() => handleModalState(null)}>X</button>
-            </div>
-            {modalState === ModalState.REGISTER
-              ? <RegisterModal
-                handleShowModal={handleModalState}
-                fetchUserAccounts={fetchUserAccounts}
-              />
-              : modalState === ModalState.UPDATE
-              ? <UpdateModal
-                handleShowModal={handleModalState}
-                fetchUserAccounts={fetchUserAccounts}
-              />
-              : modalState === ModalState.DELETE
-              ? <DeleteModal
-                handleShowModal={handleModalState}
-                fetchUserAccounts={fetchUserAccounts}
-              />
-              : ''
-            }
-          </div>
-        }
-      </div>
+    modalState &&
+    <div className="background" onClick={closeModal}>
+      {modal[modalState]}
     </div>
+    // <div className={modalState === null ? 'modal__null' : 'modal__background'}>
+    //   <div className="center">
+    //     {
+    //       modalState === null ? ''
+    //     : <div className="modal">
+    //         <div className="modal__header">
+    //           <span>
+    //             {
+    //               modalState === ModalState.REGISTER ? '계정등록'
+    //               : modalState === ModalState.UPDATE ? '계정 업데이트'
+    //               : ''
+    //             }
+    //           </span>
+    //           <button onClick={() => handleModalState(null)}>X</button>
+    //         </div>
+    //         {modalState === ModalState.REGISTER
+    //           ? <RegisterModal_
+    //             handleShowModal={handleModalState}
+    //             fetchUserAccounts={fetchUserAccounts}
+    //           />
+    //           : modalState === ModalState.UPDATE
+    //           ? <_UpdateModal
+    //             handleShowModal={handleModalState}
+    //             fetchUserAccounts={fetchUserAccounts}
+    //           />
+    //           : ''
+    //         }
+    //       </div>
+    //     }
+    //   </div>
+    // </div>
   )
 }
 

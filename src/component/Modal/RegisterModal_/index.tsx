@@ -69,7 +69,6 @@ const RegisterModal = ({handleShowModal, fetchUserAccounts}: RegisterModalProps)
         className="modal__button"
         onClick={async () => {
           try {
-            handleShowModal(ModalState.LOAD);
             await Account.createAccount(studentID, {password, nickname, position});
             await fetchUserAccounts();
             alert('계정을 추가하였습니다.')

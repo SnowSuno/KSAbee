@@ -1,28 +1,14 @@
-import {useState} from "react";
-import {Account} from "./api";
+import {useState, FormEvent} from "react";
 
-import {AccountStateType} from "./types";
+export function useInput(initialValue: string) {
+    const [value, setValue] = useState(initialValue);
 
-export const useAccountList = () => {
-  const [state, setState] = useState<AccountStateType>({
-    data: [],
-    loading: false,
-    error: null,
-  })
-  console.log(state);
+    const onChange = (e: FormEvent<HTMLInputElement>) => {
+        const {
+            currentTarget: { value }
+        } = e;
+        setValue(value);
+    };
 
-  const reload = async () => {
-    try {
-      setState({...state, error: null, loading: true});
-      const data = await Account.getAccounts();
-      setState({...state, data});
-    } catch (e) {
-      setState({...state, data: [], error: e as Error})
-    } finally {
-      setState({...state, loading: false})
-    }
-  }
-  reload();
-
-  return state;
-};
+    return {input: {value, onChange}, setValue};
+}
