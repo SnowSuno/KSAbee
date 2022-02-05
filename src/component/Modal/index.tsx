@@ -20,15 +20,19 @@ const Modal = ({modalState, handleModalState, fetchUserAccounts}: ModalProps) =>
   const closeModal = () => handleModalState(null);
 
   const modal = {
-    [ModalState.REGISTER]: <RegisterModal />,
-    [ModalState.UPDATE]: <UpdateModal />
+    [ModalState.REGISTER]: <RegisterModal/>,
+    [ModalState.UPDATE]: <UpdateModal/>
   }
 
   return (
     modalState &&
-    <div className="background" onClick={closeModal}>
-      {modal[modalState]}
-    </div>
+    <>
+      <div className="background" onClick={closeModal}/>
+      <div className="modal">
+          {modal[modalState]}
+      </div>
+    </>
+
     // <div className={modalState === null ? 'modal__null' : 'modal__background'}>
     //   <div className="center">
     //     {
