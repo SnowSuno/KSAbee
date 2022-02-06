@@ -1,9 +1,14 @@
 import React from "react";
 
-import {useInput} from "../../common/hooks";
+import {useInput, useSIDInput} from "../../common/hooks";
 
-function RegisterModal() {
-  const {input: studentId} = useInput("");
+interface RegisterModalProps {
+  closeModal: () => void;
+
+}
+
+function RegisterModal({closeModal}: RegisterModalProps) {
+  const {input: studentId} = useSIDInput();
 
   return (
     <>
@@ -42,7 +47,7 @@ function RegisterModal() {
         </div>
 
         <div className="buttons">
-          <button>취소</button>
+          <button onClick={closeModal}>취소</button>
           <button
             className="primary wide"
           >

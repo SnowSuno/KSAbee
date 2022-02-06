@@ -20,7 +20,7 @@ const Modal = ({modalState, handleModalState, fetchUserAccounts}: ModalProps) =>
   const closeModal = () => handleModalState(null);
 
   const modal = {
-    [ModalState.REGISTER]: <RegisterModal/>,
+    [ModalState.REGISTER]: <RegisterModal closeModal={closeModal}/>,
     [ModalState.UPDATE]: <UpdateModal/>
   }
 
