@@ -35,40 +35,58 @@
   .content {
     padding-top: 10px;
 
-    & > div {
+    div.field {
       padding-top: 15px;
-      display: flex;
-      flex-direction: row;
-      gap: 10px;
-      align-items: center;
 
-      &.buttons {
-        margin-top: 10px;
-        justify-content: space-between;
+      & > div {
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+        align-items: center;
 
-        button.wide {
-          width: 90px;
+        p {
+          color: #7e7e7e;
+          padding-left: 5px;
+          font-size: 14px;
+          font-weight: 300;
+          width: 80px;
+          //text-align: right;
+        }
+
+        input, select {
+          width: calc(100% - 90px);
         }
       }
 
-      p {
-        color: #7e7e7e;
-        padding-left: 5px;
-        font-size: 14px;
-        font-weight: 300;
-        width: 80px;
-        //text-align: right;
+      & > p {
+        color: #9e9e9e;
+        font-size: 11px;
+        padding-left: 95px;
+
+        transition: height .2s ease;
       }
 
-      input, select {
-        width: calc(100% - 90px);
+      &.error {
+        $red: #f56969;
+
+        & > p {
+          color: $red;
+        }
+        input, select {
+          border: 1.9px solid $red;
+        }
       }
     }
 
-    & > p {
-      color: #9e9e9e;
-      font-size: 11px;
-      padding-left: 95px;
+    div.buttons {
+      display: flex;
+      flex-direction: row;
+      margin-top: 20px;
+      justify-content: space-between;
+
+      button.wide {
+        width: 90px;
+      }
     }
   }
 }
